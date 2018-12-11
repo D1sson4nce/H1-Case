@@ -25,15 +25,16 @@ namespace Project
                 con.Open();
                 ada = new SqlDataAdapter("select * from Kunder", con);
                 ada.Fill(dt);
+                Console.WriteLine("ID | Navn | Adresse | Alder | Oprettelsesdato \n");
 
                 foreach (DataRow kunde in dt.Rows)
                 {
-                    Console.WriteLine(kunde["ID"].ToString());
-                    Console.WriteLine(kunde["Fornavn"].ToString());
-                    Console.WriteLine(kunde["Efternavn"].ToString());
-                    Console.WriteLine(kunde["Adresse"].ToString());
-                    Console.WriteLine(kunde["Alder"].ToString());
-                    Console.WriteLine(kunde["Opretdato"].ToString());
+                    Console.Write(kunde["ID"].ToString() + " | ");
+                    Console.Write(kunde["Fornavn"].ToString());
+                    Console.Write(kunde["Efternavn"].ToString() + " | ");
+                    Console.Write(kunde["Adresse"].ToString() + " | ");
+                    Console.Write(kunde["Alder"].ToString() + " | ");
+                    Console.Write(kunde["Opretdato"].ToString());
                     Console.WriteLine();
                 }
             }
