@@ -9,6 +9,6 @@ namespace Project
 {
     static class Sql
     {
-        CurrencyWrapper
+        Console.WriteLine();
     }
 }
