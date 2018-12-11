@@ -10,7 +10,11 @@ namespace Project
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine("Hovedmenu");
+
+            Console.WriteLine("Kunder: ");
+            Console.WriteLine("Biler: ");
+
         }
     }
 }
