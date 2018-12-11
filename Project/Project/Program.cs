@@ -44,7 +44,6 @@ namespace Project
         public static void Bilmenu()
         {
             Console.WriteLine("Bil menu");
-
         }
     }
 }
