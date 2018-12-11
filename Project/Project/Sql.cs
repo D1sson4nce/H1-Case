@@ -11,7 +11,32 @@ namespace Project
 {
     class Sql
     {
-        string strCon = "data source=DESKTOP-RLV28AP; database=ProjektDB; integrated security=SSPI";
-        
+        private string strCon1 = "data source=DESKTOP-RLV28AP; database=ProjektDB; integrated security=SSPI";
+        SqlConnection con;
+        SqlDataAdapter ada;
+        SqlCommand cmd;
+        DataTable dt;      
+
+        public void KundeListe()
+        {
+            dt = new DataTable();
+            using (con = new SqlConnection(strCon1))
+            {
+                con.Open();
+                ada = new SqlDataAdapter("select * from Kunder", con);
+                ada.Fill(dt);
+
+                foreach (DataRow kunde in dt.Rows)
+                {
+                    Console.WriteLine(kunde["ID"].ToString());
+                    Console.WriteLine(kunde["Fornavn"].ToString());
+                    Console.WriteLine(kunde["Efternavn"].ToString());
+                    Console.WriteLine(kunde["Adresse"].ToString());
+                    Console.WriteLine(kunde["Alder"].ToString());
+                    Console.WriteLine(kunde["Opretdato"].ToString());
+                    Console.WriteLine();
+                }
+            }
+        }
     }
 }
