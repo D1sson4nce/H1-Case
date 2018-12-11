@@ -12,6 +12,8 @@ namespace Project
         {
             Console.WriteLine("yeet");
             Console.WriteLine("skrrt");
+
+            Console.WriteLine("ehh");
             Console.ReadKey();
         }
     }
