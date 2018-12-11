@@ -56,7 +56,16 @@ namespace Project
             switch (menuValg)
             {
                 case ConsoleKey.D1:
-                    Console.WriteLine("");
+                    Console.WriteLine("Opret en ny kunde");
+                    Console.Write("Fornavn: ");
+                    string fnavn = Console.ReadLine();
+                    Console.Write("Efternavn: ");
+                    string enavn = Console.ReadLine();
+                    Console.Write("Adresse: ");
+                    string adresse = Console.ReadLine();
+                    Console.Write("Alder: ");
+                    int alder = Convert.ToInt32(Console.ReadLine());
+                    sql.OpretBruger(fnavn, enavn, adresse, alder);
                     break;
 
                 case ConsoleKey.D2:
