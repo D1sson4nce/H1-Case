@@ -66,7 +66,21 @@ namespace Project
                     Console.WriteLine();
                 }
             }
+        }
 
+        public void OpretBruger(string fornavn, string efternavn, string adresse, int alder)
+        {
+            using (con = new SqlConnection(use.StrCon1))
+            {
+                con.Open();
+                string sql = "";
+                cmd = new SqlCommand(sql, con);
+
+                sql = "insert into Kunder values('" + fornavn + "', '" + efternavn + "', '" + adresse + "', " + alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
+
+                ada.InsertCommand = new SqlCommand(sql, con);
+                ada.InsertCommand.ExecuteNonQuery();
+            }
         }
     }
 }
