@@ -11,14 +11,17 @@ namespace Project
     {
         static void Main(string[] args)
         {
-
+            string time = DateTime.Now.ToString("dd-MM-yyyy");
             while (true)
             {
+                
                 Console.Clear();
+                Console.WriteLine(time);
                 Console.WriteLine("Hovedmenu");
                 Console.WriteLine();
                 Console.WriteLine("1. Kunder");
                 Console.WriteLine("2. Biler");
+                Console.WriteLine("3. Tryk ESC for at lukke");
 
                 Console.Write("Valg: ");
                 ConsoleKey menuValg = Console.ReadKey().Key;
@@ -31,9 +34,10 @@ namespace Project
                     case ConsoleKey.D2:
                         Bilmenu();
                         break;
-                }
 
-                Console.ReadKey();
+                    case ConsoleKey.Escape:
+                        return;
+                }
             }
         }
 
@@ -45,13 +49,14 @@ namespace Project
             Console.WriteLine("1. Opret kunde");
             Console.WriteLine("2. Søg efter kunde");
             Console.WriteLine("3. Liste over kunder");
+            Console.WriteLine("4. Tryk ESC for at lukke");
             Console.Write("Valg: ");
             ConsoleKey menuValg = Console.ReadKey().Key;
             Console.Clear();
             switch (menuValg)
             {
                 case ConsoleKey.D1:
-                    
+                    Console.WriteLine("");
                     break;
 
                 case ConsoleKey.D2:
@@ -59,11 +64,16 @@ namespace Project
                     Console.Write("Søg: ");
                     string search = Console.ReadLine();
                     sql.KundeSøgning(search);
+                    Console.ReadKey();
                     break;
 
                 case ConsoleKey.D3:
                     sql.KundeListe();
+                    Console.ReadKey();
                     break;
+
+                case ConsoleKey.Escape:
+                    return;
             }
         }
 
@@ -75,6 +85,7 @@ namespace Project
             Console.WriteLine("1. Opret bil");
             Console.WriteLine("2. Søg efter bil");
             Console.WriteLine("3. Liste over biler");
+            Console.WriteLine("4. Tryk ESC for at lukke");
             Console.Write("Valg: ");
             ConsoleKey menuValg = Console.ReadKey().Key;
             Console.Clear();
@@ -91,6 +102,9 @@ namespace Project
                 case ConsoleKey.D3:
 
                     break;
+
+                case ConsoleKey.Escape:
+                    return;
             }
         }
     }
