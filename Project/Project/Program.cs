@@ -34,17 +34,56 @@ namespace Project
 
         public static void Kundemenu()
         {
+            Sql sql = new Sql();
             Console.WriteLine("Kunde menu");
             Console.WriteLine();
             Console.WriteLine("1. Opret kunde");
             Console.WriteLine("2. Søg efter kunde");
             Console.WriteLine("3. Liste over kunder");
+            Console.Write("Valg: ");
+            ConsoleKey menuValg = Console.ReadKey().Key;
+            Console.Clear();
+            switch (menuValg)
+            {
+                case ConsoleKey.D1:
+                    
+                    break;
+
+                case ConsoleKey.D2:
+
+                    break;
+
+                case ConsoleKey.D3:
+                    sql.KundeListe();
+                    break;
+            }
         }
 
         public static void Bilmenu()
         {
+            Sql sql = new Sql();
             Console.WriteLine("Bil menu");
+            Console.WriteLine();
+            Console.WriteLine("1. Opret bil");
+            Console.WriteLine("2. Søg efter bil");
+            Console.WriteLine("3. Liste over biler");
+            Console.Write("Valg: ");
+            ConsoleKey menuValg = Console.ReadKey().Key;
+            Console.Clear();
+            switch (menuValg)
+            {
+                case ConsoleKey.D1:
 
+                    break;
+
+                case ConsoleKey.D2:
+
+                    break;
+
+                case ConsoleKey.D3:
+
+                    break;
+            }
         }
     }
 }
