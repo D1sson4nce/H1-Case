@@ -34,7 +34,7 @@ namespace Project
 
         public static void Kundemenu()
         {
-            Sql sql = new Sql();
+            Kunder sql = new Kunder();
             Console.WriteLine("Kunde menu");
             Console.WriteLine();
             Console.WriteLine("1. Opret kunde");
@@ -61,7 +61,7 @@ namespace Project
 
         public static void Bilmenu()
         {
-            Sql sql = new Sql();
+            Kunder sql = new Kunder();
             Console.WriteLine("Bil menu");
             Console.WriteLine();
             Console.WriteLine("1. Opret bil");

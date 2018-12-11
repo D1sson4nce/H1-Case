@@ -9,11 +9,9 @@ using System.Data.SqlClient;
 
 namespace Project
 {
-    class Sql
+    class Kunder
     {
-        //private string strCon1 = "data source=JONATHAN-BÆRBAR; database=ProjektDB; integrated security=SSPI";        
-        private string strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";
-        
+        Use use = new Use();
         SqlConnection con;
         SqlDataAdapter ada;
         SqlCommand cmd;
@@ -22,7 +20,7 @@ namespace Project
         public void KundeListe()
         {
             dt = new DataTable();
-            using (con = new SqlConnection(strCon1))
+            using (con = new SqlConnection(use.StrCon1))
             {
                 con.Open();
                 ada = new SqlDataAdapter("select * from Kunder", con);
@@ -45,7 +43,7 @@ namespace Project
         public void KundeSøgning(string søgning)
         {
             dt = new DataTable();
-            using (con = new SqlConnection(strCon1))
+            using (con = new SqlConnection(use.StrCon1))
             {
                 con.Open();
                 ada = new SqlDataAdapter("select * from Kunder where ID like '" + søgning + "%' " +

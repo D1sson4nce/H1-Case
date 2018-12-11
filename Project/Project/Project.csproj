@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Biler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sql.cs" />
+    <Compile Include="Kunder.cs" />
+    <Compile Include="Use.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
