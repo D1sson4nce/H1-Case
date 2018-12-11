@@ -50,7 +50,10 @@ namespace Project
                     break;
 
                 case ConsoleKey.D2:
-
+                    Console.WriteLine("Søg efter kunde med vilkårlig info");
+                    Console.Write("Søg: ");
+                    string search = Console.ReadLine();
+                    sql.KundeSøgning(search);
                     break;
 
                 case ConsoleKey.D3:

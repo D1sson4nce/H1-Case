@@ -11,7 +11,7 @@ namespace Project
 {
     class Sql
     {
-        private string strCon1 = "data source=JONATHAN-BÆRBAR; database=ProjektDB; integrated security=SSPI";
+        private string strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";
         SqlConnection con;
         SqlDataAdapter ada;
         SqlCommand cmd;
@@ -19,7 +19,6 @@ namespace Project
 
         public void KundeListe()
         {
-            Environment.UserName();
             dt = new DataTable();
             using (con = new SqlConnection(strCon1))
             {
