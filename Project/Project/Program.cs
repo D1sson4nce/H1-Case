@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Project
 {
@@ -11,25 +11,30 @@ namespace Project
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hovedmenu");
-            Console.WriteLine();
-            Console.WriteLine("1. Kunder");
-            Console.WriteLine("2. Biler");
 
-            Console.Write("Valg: ");
-            ConsoleKey menuValg = Console.ReadKey().Key;
-            Console.Clear();
-            switch (menuValg)
+            while (true)
             {
-                case ConsoleKey.D1:
-                    Kundemenu();
-                    break;
-                case ConsoleKey.D2:
-                    Bilmenu();
-                    break;
-            }
+                Console.Clear();
+                Console.WriteLine("Hovedmenu");
+                Console.WriteLine();
+                Console.WriteLine("1. Kunder");
+                Console.WriteLine("2. Biler");
 
-            Console.ReadKey();
+                Console.Write("Valg: ");
+                ConsoleKey menuValg = Console.ReadKey().Key;
+                Console.Clear();
+                switch (menuValg)
+                {
+                    case ConsoleKey.D1:
+                        Kundemenu();
+                        break;
+                    case ConsoleKey.D2:
+                        Bilmenu();
+                        break;
+                }
+
+                Console.ReadKey();
+            }
         }
 
         public static void Kundemenu()
