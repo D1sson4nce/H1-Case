@@ -14,7 +14,6 @@ namespace Project
         Use use = new Use();
         SqlConnection con;
         SqlDataAdapter ada;
-        SqlCommand cmd;
         DataTable dt;      
 
         public void KundeListe()
@@ -74,7 +73,7 @@ namespace Project
             {
                 con.Open();
                 string sql = "";
-                cmd = new SqlCommand(sql, con);
+                ada = new SqlDataAdapter();
 
                 sql = "insert into Kunder values('" + fornavn + "', '" + efternavn + "', '" + adresse + "', " + alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
 
