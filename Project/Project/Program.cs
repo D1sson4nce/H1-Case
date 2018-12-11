@@ -12,25 +12,39 @@ namespace Project
         static void Main(string[] args)
         {
             Console.WriteLine("Hovedmenu");
-
+            Console.WriteLine();
             Console.WriteLine("1. Kunder");
             Console.WriteLine("2. Biler");
 
-            int menuValg = Convert.ToInt32(Console.ReadKey().Key);
+            Console.Write("Valg: ");
+            ConsoleKey menuValg = Console.ReadKey().Key;
+            Console.Clear();
             switch (menuValg)
             {
-                case 1:
-                    Console.WriteLine("Kunde menu");
-                    Console.ReadKey();
+                case ConsoleKey.D1:
+                    Kundemenu();
                     break;
-                case 2:
-                    Console.WriteLine("Bil menu");
-                    Console.ReadKey();
+                case ConsoleKey.D2:
+                    Bilmenu();
                     break;
-
             }
 
             Console.ReadKey();
+        }
+
+        public static void Kundemenu()
+        {
+            Console.WriteLine("Kunde menu");
+            Console.WriteLine();
+            Console.WriteLine("1. Opret kunde");
+            Console.WriteLine("2. Søg efter kunde");
+            Console.WriteLine("3. Liste over kunder");
+        }
+
+        public static void Bilmenu()
+        {
+            Console.WriteLine("Bil menu");
+
         }
     }
 }
