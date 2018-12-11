@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Project
 {
@@ -16,6 +18,9 @@ namespace Project
             private set { strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";; }
         }
 
+        public SqlConnection con { get; set; }
+        public SqlDataAdapter ada { get; set; }
+        public DataTable dt { get; set; }
 
 
     }

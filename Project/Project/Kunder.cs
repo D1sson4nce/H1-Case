@@ -12,21 +12,18 @@ namespace Project
     class Kunder
     {
         Use use = new Use();
-        SqlConnection con;
-        SqlDataAdapter ada;
-        DataTable dt;      
 
         public void KundeListe()
         {
-            dt = new DataTable();
-            using (con = new SqlConnection(use.StrCon1))
+            use.dt = new DataTable();
+            using (use.con = new SqlConnection(use.StrCon1))
             {
-                con.Open();
-                ada = new SqlDataAdapter("select * from Kunder", con);
-                ada.Fill(dt);
+                use.con.Open();
+                use.ada = new SqlDataAdapter("select * from Kunder", use.con);
+                use.ada.Fill(use.dt);
                 Console.WriteLine("ID | Navn | Adresse | Alder | Oprettelsesdato \n");
 
-                foreach (DataRow kunde in dt.Rows)
+                foreach (DataRow kunde in use.dt.Rows)
                 {
                     Console.Write(kunde["ID"].ToString() + " | ");
                     Console.Write(kunde["Fornavn"].ToString() + " ");
@@ -41,20 +38,20 @@ namespace Project
 
         public void KundeSøgning(string søgning)
         {
-            dt = new DataTable();
-            using (con = new SqlConnection(use.StrCon1))
+            use.dt = new DataTable();
+            using (use.con = new SqlConnection(use.StrCon1))
             {
-                con.Open();
-                ada = new SqlDataAdapter("select * from Kunder where ID like '" + søgning + "%' " +
+                use.con.Open();
+                use.ada = new SqlDataAdapter("select * from Kunder where ID like '" + søgning + "%' " +
                 "or Fornavn like '" + søgning + "%' " +
                 "or Efternavn like '" + søgning + "%' " +
                 "or Adresse like '" + søgning + "%' " +
                 "or Alder like '" + søgning + "%' " + 
-                "or Opretdato like '" + søgning + "%'", con);
-                ada.Fill(dt);
+                "or Opretdato like '" + søgning + "%'", use.con);
+                use.ada.Fill(use.dt);
                 Console.WriteLine("ID | Navn | Adresse | Alder | Oprettelsesdato \n");
 
-                foreach (DataRow kunde in dt.Rows)
+                foreach (DataRow kunde in use.dt.Rows)
                 {
                     Console.Write(kunde["ID"].ToString() + " | ");
                     Console.Write(kunde["Fornavn"].ToString() + " ");
@@ -69,17 +66,17 @@ namespace Project
 
         public void OpretBruger(string fornavn, string efternavn, string adresse, int alder)
         {
-            using (con = new SqlConnection(use.StrCon1))
+            using (use.con = new SqlConnection(use.StrCon1))
             {
-                con.Open();
+                use.con.Open();
                 string sql = "";
-                ada = new SqlDataAdapter();
+                use.ada = new SqlDataAdapter();
 
                 sql = "insert into Kunder values('" + fornavn + "', '" + efternavn + "', '" + adresse + "', " + alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
 
-                ada.InsertCommand = new SqlCommand(sql, con);
-                ada.InsertCommand.ExecuteNonQuery();
+                use.ada.InsertCommand = new SqlCommand(sql, use.con);
+                use.ada.InsertCommand.ExecuteNonQuery();
             }
-        }
+        }        
     }
 }
