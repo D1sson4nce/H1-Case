@@ -11,6 +11,7 @@ namespace Project
     {
         static void Main(string[] args)
         {
+            string yes;
             Console.WriteLine("Hovedmenu");
             Console.WriteLine();
             Console.WriteLine("1. Kunder");
