@@ -68,19 +68,20 @@ namespace Project
                         Console.Write("Søg: ");
                         string search = Console.ReadLine();
                         sql.KundeSøgning(search);
-                        Console.ReadKey();
+                        Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
+                        sql.VælgKunde(Console.ReadLine());
                         break;
 
                     case ConsoleKey.D3:
                         sql.KundeListe();
-                        Console.Write("\n Vælg ID eller Esc for at gå tilbage: ");
-                        Console.ReadKey();
-                        Console.Clear();
+                        Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
+                        sql.VælgKunde(Console.ReadLine());     
                         break;
 
                     case ConsoleKey.Escape:
                         return;
                 }
+                Console.Clear();
             }
         }
 
