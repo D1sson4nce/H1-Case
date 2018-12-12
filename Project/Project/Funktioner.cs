@@ -106,7 +106,46 @@ namespace Project
             Console.Clear();
             Program.Kundemenu();
         }
+        public void KundeMuligheder()
+        {
+            string kunde;
+            ConsoleKey kundeValg;
+            bool ud = false;
+            string valgKunde;
+            Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
+            valgKunde = Console.ReadLine();
+            while (!ud)
+            {
+                kunde = sql.VælgKunde(valgKunde);
+                if (kunde != "Findes Ikke")
+                {
+                    Console.WriteLine("[S] Slet kunde");
+                    Console.WriteLine("[R] Redigere kunde");
+                    Console.WriteLine("[B] Kundens biler");
+                    kundeValg = Console.ReadKey(true).Key;
+                    switch (kundeValg)
+                    {
+                        case ConsoleKey.S:
+                            sql.SletKunde(kunde);
+                            break;
+                        case ConsoleKey.R:
+                            RedigerKunde(kunde);
+                            break;
+                        case ConsoleKey.B:
+                            sql.KundeBil(kunde);
+
+                            Console.ReadKey();
+                            break;
+                        case ConsoleKey.Escape:
+                            break;
+                    }
+                }
+
+                ud = true;
+            }
+        }
         #endregion
+        #region Biler
         public void OpretBil()
         {
             Console.Clear();
@@ -150,31 +189,94 @@ namespace Project
             Console.Clear();
             Program.Bilmenu();
         }
-
-        public void KundeMuligheder()
+        public void RedigerBil(string id)
+        {
+            Console.Clear();
+            Console.WriteLine("Hvad vil du ændre:");
+            Console.WriteLine("[1] Registreringsnummer");
+            Console.WriteLine("[2] Mærke");
+            Console.WriteLine("[3] Model");
+            Console.WriteLine("[4] Årgang");
+            Console.WriteLine("[5] Kilometer");
+            Console.WriteLine("[6] Brændstofstype");
+            ConsoleKey menuValg = Console.ReadKey(true).Key;
+            string nyt = "";
+            string g = "";
+            switch (menuValg)
+            {
+                case ConsoleKey.D1:
+                    g = "Regnr";
+                    Console.Write("Nyt regnr: ");
+                    nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerBil(id); }
+                    break;
+                case ConsoleKey.D2:
+                    g = "Mærke";
+                    Console.Write("Nyt mærke: ");
+                    nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerBil(id); }
+                    break;
+                case ConsoleKey.D3:
+                    g = "Model";
+                    Console.Write("Ny model: ");
+                    nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerBil(id); }
+                    break;
+                case ConsoleKey.D4:
+                    g = "Årgang";
+                    Console.Write("Ny årgang: ");
+                    if (int.TryParse(Console.ReadLine(), out int nyå)) ;
+                    else
+                    {
+                        RedigerBil(id);
+                    }
+                    nyt = nyå.ToString();
+                    break;
+                case ConsoleKey.D5:
+                    g = "Kilometer";
+                    Console.Write("Ny antal km: ");
+                    if (int.TryParse(Console.ReadLine(), out int nykm)) ;
+                    else
+                    {
+                        RedigerBil(id);
+                    }
+                    nyt = nykm.ToString();
+                    break;
+                case ConsoleKey.D6:
+                    g = "Brændstoftype";
+                    Console.Write("Ny brændstoftype: ");
+                    nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerBil(id); }
+                    break;
+            }
+            bil.RetBil(id, g, nyt);
+            Console.Clear();
+            Program.Bilmenu();
+        }
+        public void BilMuligheder()
         {
             string kunde;
             ConsoleKey kundeValg;
             bool ud = false;
             string valgKunde;
-            Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
+            Console.Write("\nVælg Registreringsnummer eller tryk på alt andet for at gå tilbage: ");
             valgKunde = Console.ReadLine();
             while (!ud)
             {
                 kunde = sql.VælgKunde(valgKunde);
                 if (kunde != "Findes Ikke")
                 {
-                    Console.WriteLine("[S] Slet kunde");
-                    Console.WriteLine("[R] Redigere kunde");
+                    Console.WriteLine("[S] Slet bil");
+                    Console.WriteLine("[R] Redigere bil");
                     Console.WriteLine("[B] Kundens biler");
                     kundeValg = Console.ReadKey(true).Key;
                     switch (kundeValg)
                     {
                         case ConsoleKey.S:
-                            sql.SletKunde(kunde);
+                            sql.SletBil(kunde);
                             break;
                         case ConsoleKey.R:
-                            RedigerKunde(kunde);
+                            RedigerBil(kunde);
                             break;
                         case ConsoleKey.B:
                             sql.KundeBil(kunde);
@@ -189,5 +291,7 @@ namespace Project
                 ud = true;
             }
         }
+        #endregion
+
     }
 }
