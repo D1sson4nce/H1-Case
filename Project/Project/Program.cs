@@ -156,11 +156,11 @@ namespace Project
                 switch (menuValg)
                 {
                     case ConsoleKey.D1:
-                        //fejlHånd.OpretBil();
+                        fejlHånd.OpretBil();
                         break;
 
                     case ConsoleKey.D2:
-                        //fejlHånd.BilSøgning();
+                        fejlHånd.BilSøgning();
                         break;
 
                     case ConsoleKey.D3:
