@@ -28,9 +28,9 @@ namespace Project
                     Console.Write(bil["Mærke"] + " ");
                     Console.Write(bil["Model"] + " | ");
                     Console.Write(bil["Årgang"] + " | ");
-                    Console.Write(bil["Kilometer"] + " | ");
+                    Console.Write(bil["Km"] + " | ");
                     Console.Write(bil["Brændstoftype"] + " | ");
-                    Console.Write(bil["Ejer"] + " | ");
+                    //Console.Write(bil["EjerID"] + " | ");
                     Console.Write(bil["Opretdato"]);
                     Console.WriteLine();
                 }
@@ -73,6 +73,38 @@ namespace Project
                 else
                 {
                     Console.WriteLine("Fejl. Bilen er allerede registreret i databasen.");
+                }
+            }
+        }
+
+        public void BilSøgning(string bilSøg)
+        {
+            use.dt = new DataTable();
+            using (use.con = new SqlConnection(use.StrCon1))
+            {
+                use.con.Open();
+                use.ada = new SqlDataAdapter($"select * from Biler where Regnr like '{bilSøg}%'" +
+                                             $"or Mærke like '{bilSøg}%'" +
+                                             $"or Model like '{bilSøg}%'" +
+                                             $"or Årgang like '{bilSøg}%'" +
+                                             $"or Km like '{bilSøg}%'" +
+                                             $"or Brændstoftype like '{bilSøg}%'" +
+                                             $"or EjerID like '{bilSøg}%'" +
+                                             $"or Opretdato like '{bilSøg}%'", use.con);
+                use.ada.Fill(use.dt);
+                Console.WriteLine("Regnr | Mærke | Model | Årgang | Kilometer | Brændstoftype | Ejer ID | Oprettelses dato");
+
+                foreach (DataRow bil in use.dt.Rows)
+                {
+                    Console.Write(bil["Regnr"] + " | ");
+                    Console.Write(bil["Mærke"] + " | ");
+                    Console.Write(bil["Model"] + " | ");
+                    Console.Write(bil["Årgang"] + " | ");
+                    Console.Write(bil["Km"] + " | ");
+                    Console.Write(bil["Brændstoftype"] + " | ");
+                    Console.Write(bil["EjerID"] + " | ");
+                    Console.Write(bil["Opretdato"] + " | ");
+                    Console.WriteLine();
                 }
             }
         }
