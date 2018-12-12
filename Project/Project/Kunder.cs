@@ -169,7 +169,7 @@ namespace Project
                 use.Con.Open();
                 use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Biler.Opretdato, ID from Biler join Kunder on EjerID = ID", use.Con);
                 use.Ada.Fill(use.Dt);
-                Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype \n");
+                Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype | Oprettelsesdato \n");
 
                 foreach (DataRow bil in use.Dt.Rows)
                 {
