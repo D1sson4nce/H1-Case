@@ -58,10 +58,6 @@ namespace Project
                 Console.Write("Valg: ");
                 ConsoleKey menuValg = Console.ReadKey(true).Key;
                 Console.Clear();
-                string kunde;
-                ConsoleKey kundeValg;
-                bool ud = false;
-                string valgKunde;
                 switch (menuValg)
                 {
                     case ConsoleKey.D1:
@@ -73,67 +69,12 @@ namespace Project
                         Console.Write("Søg: ");
                         string search = Console.ReadLine();
                         sql.KundeSøgning(search);
-                        Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
-                        valgKunde = Console.ReadLine();
-                        while (!ud)
-                        {
-                            kunde = sql.VælgKunde(valgKunde);
-                            if (kunde != "Findes Ikke")
-                            {
-                                Console.WriteLine("[S] slet kunde");
-                                Console.WriteLine("[R] Redigere kunde");
-                                Console.WriteLine("[B] Kundens biler");
-                                kundeValg = Console.ReadKey(true).Key;
-                                switch (kundeValg)
-                                {
-                                    case ConsoleKey.S:
-                                        sql.SletKunde(kunde);
-                                        break;
-                                    case ConsoleKey.R:
-                                        fejlHånd.RedigerKunde(kunde);
-                                        break;
-                                    case ConsoleKey.B:
-
-                                        break;
-                                    case ConsoleKey.Escape:
-                                        break;
-                                }
-                            }
-                            ud = true;
-                        }
+                        
                         break;
 
                     case ConsoleKey.D3:
                         sql.KundeListe();
-                        Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
-                        valgKunde = Console.ReadLine();
-                        while (!ud)
-                        {
-                            kunde = sql.VælgKunde(valgKunde);
-                            if (kunde != "Findes Ikke")
-                            {
-                                Console.WriteLine("[S] Slet kunde");
-                                Console.WriteLine("[R] Redigere kunde");
-                                Console.WriteLine("[B] Kundens biler");
-                                kundeValg = Console.ReadKey(true).Key;
-                                switch (kundeValg)
-                                {
-                                    case ConsoleKey.S:
-                                        sql.SletKunde(kunde);
-                                        break;
-                                    case ConsoleKey.R:
-                                        fejlHånd.RedigerKunde(kunde);
-                                        break;
-                                    case ConsoleKey.B:
 
-                                        break;
-                                    case ConsoleKey.Escape:
-                                        break;
-                                }
-                            }
-
-                            ud = true;
-                        }                        
                         break;
 
                     // Sender personen tilbage til hovedmenuen
