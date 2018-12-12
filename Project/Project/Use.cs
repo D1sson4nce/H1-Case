@@ -22,6 +22,13 @@ namespace Project
         public SqlDataAdapter Ada { get; set; }
         public DataTable Dt { get; set; }
 
+        private string valgKunde;
+
+        public string ValgKunde
+        {
+            get { return valgKunde; }
+            set { valgKunde = value; }
+        }
 
     }
 }

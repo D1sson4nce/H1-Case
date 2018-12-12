@@ -25,7 +25,7 @@ namespace Project
                 foreach (DataRow bil in use.Dt.Rows)
                 {
                     Console.Write(bil["Regnr"] + " | ");
-                    Console.Write(bil["Mærke"] + " ");
+                    Console.Write(bil["Mærke"] + " | ");
                     Console.Write(bil["Model"] + " | ");
                     Console.Write(bil["Årgang"] + " | ");
                     Console.Write(bil["Km"] + " | ");

@@ -119,22 +119,21 @@ namespace Project
                 kunde = sql.VælgKunde(valgKunde);
                 if (kunde != "Findes Ikke")
                 {
-                    Console.WriteLine("[S] Slet kunde");
-                    Console.WriteLine("[R] Redigere kunde");
-                    Console.WriteLine("[B] Kundens biler");
+                    Console.WriteLine("[1] Slet kunde");
+                    Console.WriteLine("[2] Redigere kunde");
+                    Console.WriteLine("[3] Vis Kundens biler");
                     kundeValg = Console.ReadKey(true).Key;
                     switch (kundeValg)
                     {
-                        case ConsoleKey.S:
+                        case ConsoleKey.D1:
                             sql.SletKunde(kunde);
                             break;
-                        case ConsoleKey.R:
+                        case ConsoleKey.D2:
                             RedigerKunde(kunde);
                             break;
-                        case ConsoleKey.B:
+                        case ConsoleKey.D3:
                             sql.KundeBil(kunde);
-
-                            Console.ReadKey();
+                            BilMuligheder();
                             break;
                         case ConsoleKey.Escape:
                             break;
@@ -266,19 +265,20 @@ namespace Project
                 bil = Bil.VælgBil(valgbil);
                 if (bil != "Findes Ikke")
                 {
-                    Console.WriteLine("[S] Slet bil");
-                    Console.WriteLine("[R] Redigere bil");
-                    Console.WriteLine("[B] Kundens biler");
+                    Console.WriteLine("\n[S] Slet bil");
+                    Console.WriteLine("[1] Redigere bil");
+                    Console.WriteLine("[2] Kundens biler");
+                    Console.WriteLine("[3] Vis Bilens Værkstedsbesøg");
                     kundeValg = Console.ReadKey(true).Key;
                     switch (kundeValg)
                     {
-                        case ConsoleKey.S:
+                        case ConsoleKey.D1:
                             Bil.SletBil(bil);
                             break;
-                        case ConsoleKey.R:
+                        case ConsoleKey.D2:
                             RedigerBil(bil);
                             break;
-                        case ConsoleKey.B:
+                        case ConsoleKey.D3:
                             //Bil.KundeBil(bil);
 
                             Console.ReadKey();
