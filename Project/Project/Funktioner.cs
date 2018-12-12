@@ -150,5 +150,42 @@ namespace Project
             Console.Clear();
             Program.Bilmenu();
         }
+
+        public void KundeMuligheder()
+        {
+            string kunde;
+            ConsoleKey kundeValg;
+            bool ud = false;
+            string valgKunde;
+            Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
+            valgKunde = Console.ReadLine();
+            while (!ud)
+            {
+                kunde = sql.VælgKunde(valgKunde);
+                if (kunde != "Findes Ikke")
+                {
+                    Console.WriteLine("[S] Slet kunde");
+                    Console.WriteLine("[R] Redigere kunde");
+                    Console.WriteLine("[B] Kundens biler");
+                    kundeValg = Console.ReadKey(true).Key;
+                    switch (kundeValg)
+                    {
+                        case ConsoleKey.S:
+                            sql.SletKunde(kunde);
+                            break;
+                        case ConsoleKey.R:
+                            RedigerKunde(kunde);
+                            break;
+                        case ConsoleKey.B:
+
+                            break;
+                        case ConsoleKey.Escape:
+                            break;
+                    }
+                }
+
+                ud = true;
+            }
+        }
     }
 }
