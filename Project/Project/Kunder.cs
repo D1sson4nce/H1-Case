@@ -46,8 +46,7 @@ namespace Project
                 "or Fornavn like '" + søgning + "%' " +
                 "or Efternavn like '" + søgning + "%' " +
                 "or Adresse like '" + søgning + "%' " +
-                "or Alder like '" + søgning + "%' " + 
-                "or Opretdato like '" + søgning + "%'", use.Con);
+                "or Alder like '" + søgning + "%'", use.Con);
                 use.Ada.Fill(use.Dt);
                 Console.WriteLine("ID | Navn | Adresse | Alder | Oprettelsesdato \n");
 
