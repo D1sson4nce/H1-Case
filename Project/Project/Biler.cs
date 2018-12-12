@@ -24,20 +24,23 @@ namespace Project
 
                 foreach (DataRow bil in use.dt.Rows)
                 {
-                    Console.Write(bil["ID"].ToString() + " | ");
-                    Console.Write(bil["Fornavn"].ToString() + " ");
-                    Console.Write(bil["Efternavn"].ToString() + " | ");
-                    Console.Write(bil["Adresse"].ToString() + " | ");
-                    Console.Write(bil["Alder"].ToString() + " | ");
-                    Console.Write(bil["Opretdato"].ToString());
+                    Console.Write(bil["Regnr"] + " | ");
+                    Console.Write(bil["Mærke"] + " ");
+                    Console.Write(bil["Model"] + " | ");
+                    Console.Write(bil["Årgang"] + " | ");
+                    Console.Write(bil["Kilometer"] + " | ");
+                    Console.Write(bil["Brændstoftype"] + " | ");
+                    Console.Write(bil["Ejer"] + " | ");
+                    Console.Write(bil["Opretdato"]);
                     Console.WriteLine();
                 }
                 string e = "wad";
+                bool bilFindes = false;
                 foreach (DataRow bil in use.dt.Rows)
                 {
                     if (e == bil["Regnr"].ToString())
                     {
-
+                        bilFindes = true;
                     }
                 }
             }
