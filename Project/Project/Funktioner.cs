@@ -44,10 +44,12 @@ namespace Project
                 OpretKunde();
             }
             sql.OpretBruger(fnavn, enavn, adresse, alder);
+            Console.Clear();
             Program.Kundemenu();
         }
         public void RedigerKunde(string id)
         {
+            Console.Clear();
             Console.WriteLine("Hvad vil du ændre:");
             Console.WriteLine("[1] Fornavn");
             Console.WriteLine("[2] Efternavn");
@@ -101,6 +103,8 @@ namespace Project
                     break;
             }
             sql.RetKunde(id,g,nyt);
+            Console.Clear();
+            Program.Kundemenu();
         }
         #endregion
         public void OpretBil()
@@ -143,6 +147,7 @@ namespace Project
                 Console.ReadKey(true);
                 Program.Bilmenu();
             }
+            Console.Clear();
             Program.Bilmenu();
         }
     }
