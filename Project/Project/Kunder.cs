@@ -46,8 +46,7 @@ namespace Project
                 "or Fornavn like '" + søgning + "%' " +
                 "or Efternavn like '" + søgning + "%' " +
                 "or Adresse like '" + søgning + "%' " +
-                "or Alder like '" + søgning + "%' " + 
-                "or Opretdato like '" + søgning + "%'", use.Con);
+                "or Alder like '" + søgning + "%'", use.Con);
                 use.Ada.Fill(use.Dt);
                 Console.WriteLine("ID | Navn | Adresse | Alder | Oprettelsesdato \n");
 
@@ -169,7 +168,7 @@ namespace Project
                 use.Con.Open();
                 use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Biler.Opretdato, ID from Biler join Kunder on EjerID = ID", use.Con);
                 use.Ada.Fill(use.Dt);
-                Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype \n");
+                Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype | Oprettelsesdato \n");
 
                 foreach (DataRow bil in use.Dt.Rows)
                 {

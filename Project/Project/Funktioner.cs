@@ -177,7 +177,9 @@ namespace Project
                             RedigerKunde(kunde);
                             break;
                         case ConsoleKey.B:
+                            sql.KundeBil(kunde);
 
+                            Console.ReadKey();
                             break;
                         case ConsoleKey.Escape:
                             break;
