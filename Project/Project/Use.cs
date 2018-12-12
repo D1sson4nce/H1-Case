@@ -18,9 +18,9 @@ namespace Project
             private set { strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";; }
         }
 
-        public SqlConnection con { get; set; }
-        public SqlDataAdapter ada { get; set; }
-        public DataTable dt { get; set; }
+        public SqlConnection Con { get; set; }
+        public SqlDataAdapter Ada { get; set; }
+        public DataTable Dt { get; set; }
 
 
     }
