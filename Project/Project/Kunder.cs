@@ -141,7 +141,7 @@ namespace Project
             }
         }
 
-        public bool FindKunde(string id)
+        public bool FindKunde(int id)
         {
             use.dt = new DataTable();
             using (use.con = new SqlConnection(use.StrCon1))
@@ -152,7 +152,7 @@ namespace Project
 
                 foreach (DataRow kunde in use.dt.Rows)
                 {
-                    if (id == kunde["ID"].ToString())
+                    if (id.ToString() == kunde["ID"].ToString())
                     {
                         return true;
                     }
