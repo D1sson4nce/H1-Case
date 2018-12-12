@@ -13,11 +13,10 @@ namespace Project
     {
         static void Main(string[] args)
         {
-            string time = DateTime.Now.ToString("dd-MM-yyyy");
+            //Hovedmenu
             while (true)
-            {
+            {                
                 Console.Clear();
-                Console.WriteLine(time);
                 Console.WriteLine("Hovedmenu");
                 Console.WriteLine();
                 Console.WriteLine("1. Kunder");
@@ -58,6 +57,9 @@ namespace Project
                 ConsoleKey menuValg = Console.ReadKey(true).Key;
                 Console.Clear();
                 string kunde;
+                ConsoleKey kundeValg;
+                bool ud = false;
+                string valgKunde;
                 switch (menuValg)
                 {
                     case ConsoleKey.D1:
@@ -70,19 +72,41 @@ namespace Project
                         string search = Console.ReadLine();
                         sql.KundeSøgning(search);
                         Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
-                        kunde = sql.VælgKunde(Console.ReadLine());
-
-                        Console.ReadKey();
-                        sql.SletKunde(kunde);
+                        valgKunde = Console.ReadLine();
+                        kunde = sql.VælgKunde(valgKunde);                        
+                        if (kunde != "Findes Ikke")
+                        {
+                            sql.SletKunde(kunde);
+                        }
                         break;
 
                     case ConsoleKey.D3:
                         sql.KundeListe();
                         Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
-                        kunde = sql.VælgKunde(Console.ReadLine());
-
-                        Console.ReadKey();
-                        sql.SletKunde(kunde);
+                        valgKunde = Console.ReadLine();
+                        while (!ud)
+                        {
+                            kunde = sql.VælgKunde(valgKunde);
+                            if (kunde != "Findes Ikke")
+                            {
+                                Console.WriteLine("[S] slet kunde");
+                                Console.WriteLine("[R] Redigere kunde");
+                                kundeValg = Console.ReadKey(true).Key;
+                                switch (kundeValg)
+                                {
+                                    case ConsoleKey.S:
+                                        sql.SletKunde(kunde);
+                                        ud = true;
+                                        break;
+                                    case ConsoleKey.R:
+                                        ud = true;
+                                        break;
+                                    case ConsoleKey.Escape:
+                                        ud = true;
+                                        break;
+                                }
+                            }
+                        }                        
                         break;
 
                     case ConsoleKey.Escape:
