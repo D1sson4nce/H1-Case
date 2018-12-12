@@ -141,5 +141,23 @@ namespace Project
             return "Findes Ikke";
         }
 
+        public void SletKunde(string regnr)
+        {
+            using (use.Con = new SqlConnection(use.StrCon1))
+            {
+                use.Con.Open();
+                string sql = "";
+                use.Ada = new SqlDataAdapter();
+
+                sql = "delete from Værkstedsophold where Bil = " + regnr;
+                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
+                use.Ada.InsertCommand.ExecuteNonQuery();
+
+                sql = "delete from Biler where Regnr = " + regnr;
+                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
+                use.Ada.InsertCommand.ExecuteNonQuery();
+            }
+        }
+
     }
 }
