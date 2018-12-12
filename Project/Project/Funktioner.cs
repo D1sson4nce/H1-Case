@@ -143,6 +143,7 @@ namespace Project
                 Console.ReadKey(true);
                 Program.Bilmenu();
             }
+            Program.Bilmenu();
         }
     }
 }
