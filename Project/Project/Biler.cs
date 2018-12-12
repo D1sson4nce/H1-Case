@@ -34,14 +34,45 @@ namespace Project
                     Console.Write(bil["Opretdato"]);
                     Console.WriteLine();
                 }
+            }
+        }
+
+        public void OpretBil(string regnr, string mærke, string model, int årgang, double km, string brnstoftype, int ejer)
+        {
+            use.dt = new DataTable();
+            using (use.con = new SqlConnection(use.StrCon1))
+            {
+                use.con.Open();
                 string e = "wad";
                 bool bilFindes = false;
+                // Tjekker om en bil findes i databasen, før bilen kan blive oprettet
                 foreach (DataRow bil in use.dt.Rows)
                 {
                     if (e == bil["Regnr"].ToString())
                     {
                         bilFindes = true;
                     }
+                    else
+                    {
+                        bilFindes = false;
+                    }
+                }
+
+                // Hvis bilen ikke findes i databasen, skal den oprette bilen
+                if (bilFindes == false)
+                {
+                    string sql = null;
+                    use.ada = new SqlDataAdapter();
+
+                    sql = $"insert into Biler values ('{regnr}', '{mærke}', '{model}', {årgang}, {km}, '{brnstoftype}', {ejer})";
+
+                    use.ada.InsertCommand = new SqlCommand(sql, use.con);
+                    use.ada.InsertCommand.ExecuteNonQuery();
+                }
+                // Hvis bilen findes i databasen, skal den oplyse det og afbryde aktionen
+                else
+                {
+                    Console.WriteLine("Fejl. Bilen er allerede registreret i databasen.");
                 }
             }
         }
