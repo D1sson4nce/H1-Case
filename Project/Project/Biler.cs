@@ -32,14 +32,6 @@ namespace Project
                     Console.Write(bil["Opretdato"].ToString());
                     Console.WriteLine();
                 }
-                string e = "wad";
-                foreach (DataRow bil in use.dt.Rows)
-                {
-                    if (e == bil["Regnr"].ToString())
-                    {
-
-                    }
-                }
             }
         }
     }
