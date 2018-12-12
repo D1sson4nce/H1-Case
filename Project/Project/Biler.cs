@@ -131,7 +131,6 @@ namespace Project
                         Console.Write(bil["Årgang"] + " | ");
                         Console.Write(bil["Km"] + " | ");
                         Console.Write(bil["Brændstoftype"] + " | ");
-                        Console.Write(bil["EjerID"] + " | ");
                         Console.Write(bil["Opretdato"] + " | ");
                         Console.WriteLine();
                         return valgID;
@@ -141,7 +140,7 @@ namespace Project
             return "Findes Ikke";
         }
 
-        public void SletKunde(string regnr)
+        public void SletBil(string regnr)
         {
             using (use.Con = new SqlConnection(use.StrCon1))
             {
@@ -149,15 +148,28 @@ namespace Project
                 string sql = "";
                 use.Ada = new SqlDataAdapter();
 
-                sql = "delete from Værkstedsophold where Bil = " + regnr;
+                sql = "delete from Værkstedsophold where Bil = '" + regnr + "'";
                 use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
                 use.Ada.InsertCommand.ExecuteNonQuery();
 
-                sql = "delete from Biler where Regnr = " + regnr;
+                sql = "delete from Biler where Regnr = '" + regnr + "'";
                 use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
                 use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
 
+        public void RetBil(string id, string info, string nyInfo)
+        {
+            using (use.Con = new SqlConnection(use.StrCon1))
+            {
+                use.Con.Open();
+                string sql = "";
+                use.Ada = new SqlDataAdapter();
+
+                sql = "update Biler set " + info + " = '" + nyInfo + "'  where Regnr = '" + id + "'";
+                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
+                use.Ada.InsertCommand.ExecuteNonQuery();
+            }
+        }
     }
 }

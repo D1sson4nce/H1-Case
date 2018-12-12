@@ -279,7 +279,7 @@ namespace Project
                             RedigerBil(bil);
                             break;
                         case ConsoleKey.B:
-                            Bil.KundeBil(bil);
+                            //Bil.KundeBil(bil);
 
                             Console.ReadKey();
                             break;

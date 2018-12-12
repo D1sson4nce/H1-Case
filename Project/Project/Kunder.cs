@@ -135,8 +135,6 @@ namespace Project
                 sql = "update Kunder set " + info + " = '" + nyInfo + "'  where ID = " + id;
                 use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
                 use.Ada.InsertCommand.ExecuteNonQuery();
-
-                
             }
         }
 
