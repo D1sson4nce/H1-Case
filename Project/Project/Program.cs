@@ -116,16 +116,15 @@ namespace Project
                                 {
                                     case ConsoleKey.S:
                                         sql.SletKunde(kunde);
-                                        ud = true;
                                         break;
                                     case ConsoleKey.R:
-                                        ud = true;
                                         break;
                                     case ConsoleKey.Escape:
-                                        ud = true;
                                         break;
                                 }
                             }
+
+                            ud = true;
                         }                        
                         break;
 
@@ -160,7 +159,7 @@ namespace Project
                         break;
 
                     case ConsoleKey.D2:
-                        //fejlHånd.BilSøgning();
+                        biler.BilSøgning(Console.ReadLine());
                         break;
 
                     case ConsoleKey.D3:

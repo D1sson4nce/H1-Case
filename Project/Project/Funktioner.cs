@@ -10,6 +10,7 @@ namespace Project
     {
         Kunder sql = new Kunder();
         Biler bil = new Biler();
+        #region Kunder
         public void OpretKunde()
         {
             Console.Clear();
@@ -45,7 +46,63 @@ namespace Project
             sql.OpretBruger(fnavn, enavn, adresse, alder);
             Program.Kundemenu();
         }
-
+        public void RedigerKunde(string id)
+        {
+            Console.WriteLine("Hvad vil du ændre:");
+            Console.WriteLine("[1] Fornavn");
+            Console.WriteLine("[2] Efternavn");
+            Console.WriteLine("[3] Adresse");
+            Console.WriteLine("[4] Alder");
+            ConsoleKey menuValg = Console.ReadKey(true).Key;
+            string nyt = "";
+            string g = "";
+            switch (menuValg)
+            {
+                case ConsoleKey.D1:
+                    g = "Fornavn";
+                    Console.Write("Nyt fornavn: ");
+                    nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerKunde(id); }
+                    foreach (char c in nyt)
+                    {
+                        if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
+                        {
+                            RedigerKunde(id);
+                        }
+                    }
+                    break;
+                case ConsoleKey.D2:
+                    g = "Efternavn";
+                    Console.Write("Nyt efternavn: ");
+                    nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerKunde(id); }
+                    foreach (char c in nyt)
+                    {
+                        if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
+                        {
+                            RedigerKunde(id);
+                        }
+                    }
+                    break;
+                case ConsoleKey.D3:
+                    g = "Adresse";
+                    Console.Write("Ny adresse: ");
+                    nyt = Console.ReadLine();
+                    break;
+                case ConsoleKey.D4:
+                    g = "Alder";
+                    Console.Write("Ny alder: ");
+                    if (int.TryParse(Console.ReadLine(), out int nyalder)) ;
+                    else
+                    {
+                        RedigerKunde(id);
+                    }
+                    nyt = nyalder.ToString();
+                    break;
+            }
+            sql.RetKunde(id,g,nyt);
+        }
+        #endregion
         public void OpretBil()
         {
             Console.Clear();
