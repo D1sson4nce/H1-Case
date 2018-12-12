@@ -108,12 +108,17 @@ namespace Project
                         break;
 
                     case ConsoleKey.D2:
-                        biler.BilSøgning(Console.ReadLine());
+                        Console.WriteLine("Søg efter kunde med vilkårlig info");
+                        Console.Write("Søg: ");
+                        string bil = Console.ReadLine();
+                        biler.BilSøgning(bil);
+                        fejlHånd.BilMuligheder();
                         Console.ReadKey();
                         break;
 
                     case ConsoleKey.D3:
                         biler.BilListe();
+                        fejlHånd.BilMuligheder();
                         Console.ReadKey();
                         break;
 
