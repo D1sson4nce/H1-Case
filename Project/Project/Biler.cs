@@ -75,6 +75,8 @@ namespace Project
                     Console.WriteLine("Fejl. Bilen er allerede registreret i databasen.");
                 }
             }
+
+            Console.ReadKey();
         }
 
         public void BilSøgning(string bilSøg)
