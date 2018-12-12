@@ -109,7 +109,6 @@ namespace Project
 
         public void SletKunde(string id)
         {
-            use.dt = new DataTable();
             using (use.con = new SqlConnection(use.StrCon1))
             {
                 use.con.Open();
@@ -124,6 +123,42 @@ namespace Project
                 use.ada.InsertCommand = new SqlCommand(sql, use.con);
                 use.ada.InsertCommand.ExecuteNonQuery();
             }
+        }
+
+        public void RetKunde(string id, string info, string nyInfo)
+        {
+            using (use.con = new SqlConnection(use.StrCon1))
+            {
+                use.con.Open();
+                string sql = "";
+                use.ada = new SqlDataAdapter();
+
+                sql = "update Kunder set " + info + " = '" + nyInfo + "'  where ID = " + id;
+                use.ada.InsertCommand = new SqlCommand(sql, use.con);
+                use.ada.InsertCommand.ExecuteNonQuery();
+
+                
+            }
+        }
+
+        public bool FindKunde(string id)
+        {
+            use.dt = new DataTable();
+            using (use.con = new SqlConnection(use.StrCon1))
+            {
+                use.con.Open();
+                use.ada = new SqlDataAdapter("select ID from Kunder", use.con);
+                use.ada.Fill(use.dt);
+
+                foreach (DataRow kunde in use.dt.Rows)
+                {
+                    if (id == kunde["ID"].ToString())
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
