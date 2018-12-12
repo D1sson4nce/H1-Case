@@ -160,5 +160,32 @@ namespace Project
             }
             return false;
         }
+
+        public void KundeBil(string id)
+        {
+            use.dt = new DataTable();
+            using (use.con = new SqlConnection(use.StrCon1))
+            {
+                use.con.Open();
+                use.ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Biler.Opretdato, ID from Biler join Kunder on EjerID = ID", use.con);
+                use.ada.Fill(use.dt);
+                Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype \n");
+
+                foreach (DataRow bil in use.dt.Rows)
+                {
+                    if (id == bil["ID"].ToString())
+                    {
+                        Console.Write(bil["Regnr"] + " | ");
+                        Console.Write(bil["Mærke"] + " ");
+                        Console.Write(bil["Model"] + " | ");
+                        Console.Write(bil["Årgang"] + " | ");
+                        Console.Write(bil["Km"] + " | ");
+                        Console.Write(bil["Brændstoftype"] + " | ");
+                        Console.Write(bil["Opretdato"]);
+                        Console.WriteLine();
+                    }
+                }
+            }
+        }
     }
 }
