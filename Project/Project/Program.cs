@@ -109,6 +109,7 @@ namespace Project
 
                     case ConsoleKey.D2:
                         biler.BilSøgning(Console.ReadLine());
+                        Console.ReadKey();
                         break;
 
                     case ConsoleKey.D3:

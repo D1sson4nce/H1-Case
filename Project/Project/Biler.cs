@@ -92,8 +92,7 @@ namespace Project
                                              $"or Årgang like '{bilSøg}%'" +
                                              $"or Km like '{bilSøg}%'" +
                                              $"or Brændstoftype like '{bilSøg}%'" +
-                                             $"or EjerID like '{bilSøg}%'" +
-                                             $"or Opretdato like '{bilSøg}%'", use.Con);
+                                             $"or EjerID like '{bilSøg}%'", use.Con);
                 use.Ada.Fill(use.Dt);
                 Console.WriteLine("Regnr | Mærke | Model | Årgang | Kilometer | Brændstoftype | Ejer ID | Oprettelses dato");
 
