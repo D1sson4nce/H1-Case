@@ -111,5 +111,36 @@ namespace Project
                 }
             }
         }
+
+        public string VælgBil(string valgID)
+        {
+            Console.Clear();
+            use.Dt = new DataTable();
+            using (use.Con = new SqlConnection(use.StrCon1))
+            {
+                use.Con.Open();
+                use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID", use.Con);
+                use.Ada.Fill(use.Dt);
+
+                foreach (DataRow bil in use.Dt.Rows)
+                {
+                    if (valgID == bil["Regnr"].ToString())
+                    {
+                        Console.Write(bil["Regnr"] + " | ");
+                        Console.Write(bil["Mærke"] + " | ");
+                        Console.Write(bil["Model"] + " | ");
+                        Console.Write(bil["Årgang"] + " | ");
+                        Console.Write(bil["Km"] + " | ");
+                        Console.Write(bil["Brændstoftype"] + " | ");
+                        Console.Write(bil["EjerID"] + " | ");
+                        Console.Write(bil["Opretdato"] + " | ");
+                        Console.WriteLine();
+                        return valgID;
+                    }
+                }
+            }
+            return "Findes Ikke";
+        }
+
     }
 }
