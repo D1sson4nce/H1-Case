@@ -57,6 +57,7 @@ namespace Project
                 Console.Write("Valg: ");
                 ConsoleKey menuValg = Console.ReadKey(true).Key;
                 Console.Clear();
+                string kunde;
                 switch (menuValg)
                 {
                     case ConsoleKey.D1:
@@ -69,13 +70,19 @@ namespace Project
                         string search = Console.ReadLine();
                         sql.KundeSøgning(search);
                         Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
-                        sql.VælgKunde(Console.ReadLine());
+                        kunde = sql.VælgKunde(Console.ReadLine());
+
+                        Console.ReadKey();
+                        sql.SletKunde(kunde);
                         break;
 
                     case ConsoleKey.D3:
                         sql.KundeListe();
                         Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
-                        sql.VælgKunde(Console.ReadLine());     
+                        kunde = sql.VælgKunde(Console.ReadLine());
+
+                        Console.ReadKey();
+                        sql.SletKunde(kunde);
                         break;
 
                     case ConsoleKey.Escape:

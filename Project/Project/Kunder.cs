@@ -79,7 +79,7 @@ namespace Project
             }
         }
         
-        public void VælgKunde(string valgID)
+        public string VælgKunde(string valgID)
         {
             Console.Clear();
             use.dt = new DataTable();
@@ -100,8 +100,29 @@ namespace Project
                         Console.Write(kunde["Alder"] + " | ");
                         Console.Write(kunde["Opretdato"]);
                         Console.WriteLine();
+                        return valgID;
                     }
                 }
+            }
+            return "Findes Ikke";
+        }
+
+        public void SletKunde(string id)
+        {
+            use.dt = new DataTable();
+            using (use.con = new SqlConnection(use.StrCon1))
+            {
+                use.con.Open();
+                string sql = "";
+                use.ada = new SqlDataAdapter();
+
+                sql = "delete from Biler where EjerID = " + id;
+                use.ada.InsertCommand = new SqlCommand(sql, use.con);
+                use.ada.InsertCommand.ExecuteNonQuery();
+
+                sql = "delete from Kunder where ID = " + id;
+                use.ada.InsertCommand = new SqlCommand(sql, use.con);
+                use.ada.InsertCommand.ExecuteNonQuery();
             }
         }
     }
