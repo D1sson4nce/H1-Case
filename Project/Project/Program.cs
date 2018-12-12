@@ -69,12 +69,12 @@ namespace Project
                         Console.Write("Søg: ");
                         string search = Console.ReadLine();
                         sql.KundeSøgning(search);
-                        
+                        fejlHånd.KundeMuligheder();
                         break;
 
                     case ConsoleKey.D3:
                         sql.KundeListe();
-
+                        fejlHånd.KundeMuligheder();
                         break;
 
                     // Sender personen tilbage til hovedmenuen
