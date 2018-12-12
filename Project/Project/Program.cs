@@ -47,6 +47,7 @@ namespace Project
             while (true)
             {
                 Kunder sql = new Kunder();
+                Funktioner fejlHånd = new Funktioner();
                 Console.WriteLine("Kunde menu");
                 Console.WriteLine();
                 Console.WriteLine("1. Opret kunde");
@@ -59,16 +60,7 @@ namespace Project
                 switch (menuValg)
                 {
                     case ConsoleKey.D1:
-                        Console.WriteLine("Opret en ny kunde");
-                        Console.Write("Fornavn: ");
-                        string fnavn = Console.ReadLine();
-                        Console.Write("Efternavn: ");
-                        string enavn = Console.ReadLine();
-                        Console.Write("Adresse: ");
-                        string adresse = Console.ReadLine();
-                        Console.Write("Alder: ");
-                        int alder = Convert.ToInt32(Console.ReadLine());
-                        sql.OpretBruger(fnavn, enavn, adresse, alder);
+                        fejlHånd.OpretKunde();
                         break;
 
                     case ConsoleKey.D2:
