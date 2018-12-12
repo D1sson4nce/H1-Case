@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Besøg.cs" />
     <Compile Include="Biler.cs" />
     <Compile Include="Funktioner.cs" />
     <Compile Include="Program.cs" />

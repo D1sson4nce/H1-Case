@@ -10,6 +10,7 @@ namespace Project
     {
         Kunder sql = new Kunder();
         Biler Bil = new Biler();
+        Besøg besøg = new Besøg();
         #region Kunder
         public void OpretKunde()
         {
@@ -268,7 +269,8 @@ namespace Project
                     Console.WriteLine("\n[S] Slet bil");
                     Console.WriteLine("[1] Redigere bil");
                     Console.WriteLine("[2] Kundens biler");
-                    Console.WriteLine("[3] Vis Bilens Værkstedsbesøg");
+                    Console.WriteLine("[3] Opret Besøgstid til bilen");
+                    Console.WriteLine("[4] Vis Bilens Værkstedsbesøg");
                     kundeValg = Console.ReadKey(true).Key;
                     switch (kundeValg)
                     {
@@ -279,9 +281,17 @@ namespace Project
                             RedigerBil(bil);
                             break;
                         case ConsoleKey.D3:
-                            //Bil.KundeBil(bil);
+                            besøg.OpretBesøg(bil);
+
+                            Console.Clear();
+                            Console.WriteLine("Besøgstid er nu oprettet");
 
                             Console.ReadKey();
+
+                            Console.Clear();
+                            break;
+                        case ConsoleKey.D4:
+                            besøg.BilBesøg(bil);
                             break;
                         case ConsoleKey.Escape:
                             break;
