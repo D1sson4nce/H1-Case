@@ -19,9 +19,9 @@ namespace Project
                 Console.Clear();
                 Console.WriteLine("Hovedmenu");
                 Console.WriteLine();
-                Console.WriteLine("1. Kunder");
-                Console.WriteLine("2. Biler");
-                Console.WriteLine("3. Tryk ESC for at lukke");
+                Console.WriteLine("[1] Kunder");
+                Console.WriteLine("[2] Biler");
+                Console.WriteLine("[ESC] Tryk ESC for at lukke");
 
                 Console.Write("Valg: ");
                 ConsoleKey menuValg = Console.ReadKey(true).Key;
@@ -160,7 +160,7 @@ namespace Project
                         break;
 
                     case ConsoleKey.D2:
-                        fejlHånd.BilSøgning();
+                        //fejlHånd.BilSøgning();
                         break;
 
                     case ConsoleKey.D3:
