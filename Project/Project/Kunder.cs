@@ -81,6 +81,7 @@ namespace Project
         
         public void VælgKunde(string valgID)
         {
+            Console.Clear();
             use.dt = new DataTable();
             using (use.con = new SqlConnection(use.StrCon1))
             {
