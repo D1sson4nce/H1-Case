@@ -87,16 +87,15 @@ namespace Project
                                 {
                                     case ConsoleKey.S:
                                         sql.SletKunde(kunde);
-                                        ud = true;
                                         break;
                                     case ConsoleKey.R:
-                                        ud = true;
+                                        fejlHånd.RedigerKunde(kunde);
                                         break;
                                     case ConsoleKey.Escape:
-                                        ud = true;
                                         break;
                                 }
                             }
+                            ud = true;
                         }
                         break;
 
@@ -119,6 +118,9 @@ namespace Project
                                         sql.SletKunde(kunde);
                                         break;
                                     case ConsoleKey.R:
+
+                                        break;
+                                    case ConsoleKey.B:
                                         break;
                                     case ConsoleKey.Escape:
                                         break;
