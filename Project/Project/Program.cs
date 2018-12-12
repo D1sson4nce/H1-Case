@@ -36,7 +36,8 @@ namespace Project
                         break;
 
                     case ConsoleKey.Escape:
-                        return;
+                        Environment.Exit(0);
+                        break;
                 }
             }
         }
@@ -45,6 +46,7 @@ namespace Project
         {
             while (true)
             {
+                Console.Clear();
                 Kunder sql = new Kunder();
                 Funktioner fejlHånd = new Funktioner();
                 Console.WriteLine("Kunde menu");
@@ -73,10 +75,28 @@ namespace Project
                         sql.KundeSøgning(search);
                         Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
                         valgKunde = Console.ReadLine();
-                        kunde = sql.VælgKunde(valgKunde);                        
-                        if (kunde != "Findes Ikke")
+                        while (!ud)
                         {
-                            sql.SletKunde(kunde);
+                            kunde = sql.VælgKunde(valgKunde);
+                            if (kunde != "Findes Ikke")
+                            {
+                                Console.WriteLine("[S] slet kunde");
+                                Console.WriteLine("[R] Redigere kunde");
+                                kundeValg = Console.ReadKey(true).Key;
+                                switch (kundeValg)
+                                {
+                                    case ConsoleKey.S:
+                                        sql.SletKunde(kunde);
+                                        ud = true;
+                                        break;
+                                    case ConsoleKey.R:
+                                        ud = true;
+                                        break;
+                                    case ConsoleKey.Escape:
+                                        ud = true;
+                                        break;
+                                }
+                            }
                         }
                         break;
 
@@ -109,10 +129,11 @@ namespace Project
                         }                        
                         break;
 
+                    // Sender personen tilbage til hovedmenuen
                     case ConsoleKey.Escape:
-                        return;
+                        Main(null);
+                        break;
                 }
-                Console.Clear();
             }
         }
 
@@ -120,7 +141,9 @@ namespace Project
         {
             while (true)
             {
-                Kunder sql = new Kunder();
+                Console.Clear();
+                Funktioner fejlHånd = new Funktioner();
+                Biler biler = new Biler();
                 Console.WriteLine("Bil menu");
                 Console.WriteLine();
                 Console.WriteLine("1. Opret bil");
@@ -133,19 +156,21 @@ namespace Project
                 switch (menuValg)
                 {
                     case ConsoleKey.D1:
-
+                        //fejlHånd.OpretBil();
                         break;
 
                     case ConsoleKey.D2:
-
+                        //fejlHånd.BilSøgning();
                         break;
 
                     case ConsoleKey.D3:
-
+                        biler.BilListe();
                         break;
 
+                    // Sender personen tilbage til hovedmenuen
                     case ConsoleKey.Escape:
-                        return;
+                        Main(null);
+                        break;
                 }
             }
         }
