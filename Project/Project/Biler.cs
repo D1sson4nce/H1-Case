@@ -14,15 +14,15 @@ namespace Project
 
         public void BilListe()
         {
-            use.dt = new DataTable();
-            using (use.con = new SqlConnection(use.StrCon1))
+            use.Dt = new DataTable();
+            using (use.Con = new SqlConnection(use.StrCon1))
             {
-                use.con.Open();
-                use.ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID order by EjerID", use.con);
-                use.ada.Fill(use.dt);
+                use.Con.Open();
+                use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID order by EjerID", use.Con);
+                use.Ada.Fill(use.Dt);
                 Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype | Ejer \n");
 
-                foreach (DataRow bil in use.dt.Rows)
+                foreach (DataRow bil in use.Dt.Rows)
                 {
                     Console.Write(bil["Regnr"] + " | ");
                     Console.Write(bil["Mærke"] + " ");
@@ -40,14 +40,14 @@ namespace Project
 
         public void OpretBil(string regnr, string mærke, string model, int årgang, double km, string brnstoftype, int ejer)
         {
-            use.dt = new DataTable();
-            using (use.con = new SqlConnection(use.StrCon1))
+            use.Dt = new DataTable();
+            using (use.Con = new SqlConnection(use.StrCon1))
             {
-                use.con.Open();
+                use.Con.Open();
                 string e = "wad";
                 bool bilFindes = false;
                 // Tjekker om en bil findes i databasen, før bilen kan blive oprettet
-                foreach (DataRow bil in use.dt.Rows)
+                foreach (DataRow bil in use.Dt.Rows)
                 {
                     if (e == bil["Regnr"].ToString())
                     {
@@ -63,12 +63,12 @@ namespace Project
                 if (bilFindes == false)
                 {
                     string sql = null;
-                    use.ada = new SqlDataAdapter();
+                    use.Ada = new SqlDataAdapter();
 
                     sql = $"insert into Biler values ('{regnr}', '{mærke}', '{model}', {årgang}, {km}, '{brnstoftype}', {ejer}, '{DateTime.Now.ToString("dd-MM-yyyy")}')";
 
-                    use.ada.InsertCommand = new SqlCommand(sql, use.con);
-                    use.ada.InsertCommand.ExecuteNonQuery();
+                    use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
+                    use.Ada.InsertCommand.ExecuteNonQuery();
                 }
                 // Hvis bilen findes i databasen, skal den oplyse det og afbryde aktionen
                 else
@@ -82,22 +82,22 @@ namespace Project
 
         public void BilSøgning(string bilSøg)
         {
-            use.dt = new DataTable();
-            using (use.con = new SqlConnection(use.StrCon1))
+            use.Dt = new DataTable();
+            using (use.Con = new SqlConnection(use.StrCon1))
             {
-                use.con.Open();
-                use.ada = new SqlDataAdapter($"select * from Biler where Regnr like '{bilSøg}%'" +
+                use.Con.Open();
+                use.Ada = new SqlDataAdapter($"select * from Biler where Regnr like '{bilSøg}%'" +
                                              $"or Mærke like '{bilSøg}%'" +
                                              $"or Model like '{bilSøg}%'" +
                                              $"or Årgang like '{bilSøg}%'" +
                                              $"or Km like '{bilSøg}%'" +
                                              $"or Brændstoftype like '{bilSøg}%'" +
                                              $"or EjerID like '{bilSøg}%'" +
-                                             $"or Opretdato like '{bilSøg}%'", use.con);
-                use.ada.Fill(use.dt);
+                                             $"or Opretdato like '{bilSøg}%'", use.Con);
+                use.Ada.Fill(use.Dt);
                 Console.WriteLine("Regnr | Mærke | Model | Årgang | Kilometer | Brændstoftype | Ejer ID | Oprettelses dato");
 
-                foreach (DataRow bil in use.dt.Rows)
+                foreach (DataRow bil in use.Dt.Rows)
                 {
                     Console.Write(bil["Regnr"] + " | ");
                     Console.Write(bil["Mærke"] + " | ");
