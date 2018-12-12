@@ -82,6 +82,7 @@ namespace Project
                             {
                                 Console.WriteLine("[S] slet kunde");
                                 Console.WriteLine("[R] Redigere kunde");
+                                Console.WriteLine("[B] Kundens biler");
                                 kundeValg = Console.ReadKey(true).Key;
                                 switch (kundeValg)
                                 {
@@ -90,6 +91,9 @@ namespace Project
                                         break;
                                     case ConsoleKey.R:
                                         fejlHånd.RedigerKunde(kunde);
+                                        break;
+                                    case ConsoleKey.B:
+
                                         break;
                                     case ConsoleKey.Escape:
                                         break;
@@ -118,9 +122,10 @@ namespace Project
                                         sql.SletKunde(kunde);
                                         break;
                                     case ConsoleKey.R:
-
+                                        fejlHånd.RedigerKunde(kunde);
                                         break;
                                     case ConsoleKey.B:
+
                                         break;
                                     case ConsoleKey.Escape:
                                         break;
