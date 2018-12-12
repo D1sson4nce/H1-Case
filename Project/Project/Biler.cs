@@ -30,7 +30,8 @@ namespace Project
                     Console.Write(bil["Årgang"] + " | ");
                     Console.Write(bil["Km"] + " | ");
                     Console.Write(bil["Brændstoftype"] + " | ");
-                    //Console.Write(bil["EjerID"] + " | ");
+                    Console.Write(bil["Fornavn"] + " ");
+                    Console.Write(bil["Efternavn"] + " | ");
                     Console.Write(bil["Opretdato"]);
                     Console.WriteLine();
                 }

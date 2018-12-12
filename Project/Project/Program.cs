@@ -109,8 +109,9 @@ namespace Project
                             kunde = sql.VælgKunde(valgKunde);
                             if (kunde != "Findes Ikke")
                             {
-                                Console.WriteLine("[S] slet kunde");
+                                Console.WriteLine("[S] Slet kunde");
                                 Console.WriteLine("[R] Redigere kunde");
+                                Console.WriteLine("[B] Kundens biler");
                                 kundeValg = Console.ReadKey(true).Key;
                                 switch (kundeValg)
                                 {
@@ -164,6 +165,7 @@ namespace Project
 
                     case ConsoleKey.D3:
                         biler.BilListe();
+                        Console.ReadKey();
                         break;
 
                     // Sender personen tilbage til hovedmenuen
