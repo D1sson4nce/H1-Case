@@ -9,7 +9,7 @@ namespace Project
     class Funktioner
     {
         Kunder sql = new Kunder();
-        Biler bil = new Biler();
+        Biler Bil = new Biler();
         #region Kunder
         public void OpretKunde()
         {
@@ -178,7 +178,7 @@ namespace Project
             }
             if (sql.FindKunde(ejer))
             {
-                bil.OpretBil(regnr, mærke, model, årgang, km, brnstoftype, ejer);
+                Bil.OpretBil(regnr, mærke, model, årgang, km, brnstoftype, ejer);
             }
             else
             {
@@ -249,22 +249,22 @@ namespace Project
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
             }
-            bil.RetBil(id, g, nyt);
+            Bil.RetBil(id, g, nyt);
             Console.Clear();
             Program.Bilmenu();
         }
         public void BilMuligheder()
         {
-            string kunde;
+            string bil;
             ConsoleKey kundeValg;
             bool ud = false;
-            string valgKunde;
+            string valgbil;
             Console.Write("\nVælg Registreringsnummer eller tryk på alt andet for at gå tilbage: ");
-            valgKunde = Console.ReadLine();
+            valgbil = Console.ReadLine();
             while (!ud)
             {
-                kunde = sql.VælgKunde(valgKunde);
-                if (kunde != "Findes Ikke")
+                bil = Bil.VælgBil(valgbil);
+                if (bil != "Findes Ikke")
                 {
                     Console.WriteLine("[S] Slet bil");
                     Console.WriteLine("[R] Redigere bil");
@@ -273,13 +273,13 @@ namespace Project
                     switch (kundeValg)
                     {
                         case ConsoleKey.S:
-                            sql.SletBil(kunde);
+                            Bil.SletBil(bil);
                             break;
                         case ConsoleKey.R:
-                            RedigerBil(kunde);
+                            RedigerBil(bil);
                             break;
                         case ConsoleKey.B:
-                            sql.KundeBil(kunde);
+                            Bil.KundeBil(bil);
 
                             Console.ReadKey();
                             break;
