@@ -81,7 +81,9 @@ namespace Project
 
                     case ConsoleKey.D3:
                         sql.KundeListe();
+                        Console.Write("\n Vælg ID eller Esc for at gå tilbage: ");
                         Console.ReadKey();
+                        Console.Clear();
                         break;
 
                     case ConsoleKey.Escape:

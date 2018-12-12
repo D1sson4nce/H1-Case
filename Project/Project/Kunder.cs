@@ -90,7 +90,7 @@ namespace Project
 
                 foreach (DataRow kunde in use.dt.Rows)
                 {
-                    if (valgID == kunde["ID"].ToString())
+                    if (valgID == kunde["ID"])
                     {
                         Console.Write(kunde["ID"] + " | ");
                         Console.Write(kunde["Fornavn"] + " ");
