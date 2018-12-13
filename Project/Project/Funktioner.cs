@@ -425,6 +425,8 @@ namespace Project
                         if (datoDag > 31 || datoDag < 1)
                         {
                             Console.WriteLine("Datoen er indtastet forkert!");
+                            Console.ReadLine();
+                            break;
                         }
                         else
                         {
@@ -446,6 +448,8 @@ namespace Project
                         if (datoMåned > 12 || datoMåned < 1)
                         {
                             Console.WriteLine("Måneden er indtastet forkert!");
+                            Console.ReadLine();
+                            break;
                         }
                         else
                         {
@@ -467,6 +471,8 @@ namespace Project
                         if (datoÅr > 9999 || datoÅr < 1000)
                         {
                             Console.WriteLine("Året er indtastet forkert!");
+                            Console.ReadLine();
+                            break;
                         }
                         else
                         {
@@ -489,6 +495,8 @@ namespace Project
                         if (datoTimer > 59 || datoTimer < 0)
                         {
                             Console.WriteLine("Timerne er indtastet forkert!");
+                            Console.ReadLine();
+                            break;
                         }
                         else
                         {
@@ -510,6 +518,8 @@ namespace Project
                         if (datoMinutter > 59 || datoMinutter < 0)
                         {
                             Console.WriteLine("Datoen er indtastet forkert!");
+                            Console.ReadLine();
+                            break;
                         }
                         else
                         {
