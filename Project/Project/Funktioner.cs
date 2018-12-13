@@ -418,13 +418,13 @@ namespace Project
                     Console.Clear();
 
                     // Dagen på ugen
-                    Console.Write("Skriv dagen på ugen for besøget [DD]: ");
+                    Console.Write("Skriv dagens dato for besøget [DD]: ");
                     try
                     {
                         datoDag = Convert.ToInt32(Console.ReadLine());
                         if (datoDag > 31 || datoDag < 1)
                         {
-                            Console.WriteLine("Datoen er indtastet forkert!");
+                            Console.WriteLine("Dagens dato er indtastet forkert!");
                             Console.ReadLine();
                             break;
                         }
@@ -435,13 +435,13 @@ namespace Project
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("Dagen er skrevet forkert!");
+                        Console.WriteLine("Dagens dato er skrevet forkert!");
                         Console.ReadLine();
                         break;
                     }
 
                     // Måneden på året
-                    Console.Write("Skriv måneden på året for besøget [MM]: ");
+                    Console.Write("Skriv månedens dato for besøget [MM]: ");
                     try
                     {
                         datoMåned = Convert.ToInt32(Console.ReadLine());
@@ -492,7 +492,7 @@ namespace Project
                     try
                     {
                         datoTimer = Convert.ToInt32(Console.ReadLine());
-                        if (datoTimer > 59 || datoTimer < 0)
+                        if (datoTimer > 23 || datoTimer < 0)
                         {
                             Console.WriteLine("Timerne er indtastet forkert!");
                             Console.ReadLine();
