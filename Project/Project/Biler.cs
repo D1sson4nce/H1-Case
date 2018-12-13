@@ -42,7 +42,7 @@ namespace Project
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                Bilen bilen = new Bilen(regnr, mærke, model, årgang, km, brnstoftype, ejer):
+                Bilen bilen = new Bilen(regnr, mærke, model, årgang, km, brnstoftype, ejer);
 
                 Use.Con.Open();
                 string e = "wad";

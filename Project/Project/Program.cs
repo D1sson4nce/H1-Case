@@ -13,7 +13,7 @@ namespace Project
     {
         static void Main(string[] args)
         {
-            //Hovedmenu
+            //Hovedmenu som venter på et af de gyldige inputs
             while (true)
             {                
                 Console.Clear();
@@ -42,6 +42,7 @@ namespace Project
             }
         }
 
+        // Kundemenu som venter på et af de gyldige inputs
         public static void Kundemenu()
         {
             while (true)
@@ -84,6 +85,7 @@ namespace Project
             }
         }
 
+        // Bilmenu som venter på et af de gyldige inputs
         public static void Bilmenu()
         {
             while (true)
@@ -103,6 +105,7 @@ namespace Project
                 switch (menuValg)
                 {
                     case ConsoleKey.D1:
+                        // Sender brugeren til en metode med en menu hvor man opretter en ny bil
                         fejlHånd.OpretBil();
                         break;
 
