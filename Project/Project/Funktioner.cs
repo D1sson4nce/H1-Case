@@ -310,5 +310,12 @@ namespace Project
         }
         #endregion
 
+        #region Besøg
+
+        public void BilBesøg()
+        {
+
+        }
+        #endregion
     }
 }
