@@ -37,11 +37,13 @@ namespace Project
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
+                Besøget besøget = new Besøget(id, dato);
+
                 Use.Con.Open();
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
 
-                sql = "insert into Værkstedsophold values('" + id + "', '" + dato + "')";
+                sql = "insert into Værkstedsophold values('" + besøget.Bil + "', '" + besøget.Dato + "')";
 
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
