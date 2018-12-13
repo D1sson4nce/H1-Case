@@ -16,29 +16,53 @@ namespace Project
             Console.Write("Fornavn: ");
             string fnavn = Console.ReadLine();
             if (fnavn.Length < 1) { OpretKunde(); }
+            if (fnavn.Length > 20)
+            {
+                Console.WriteLine("Maks 20 tegn i fornavn");
+                Console.ReadKey();
+                OpretKunde();
+            }
             foreach(char c in fnavn)
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                 {
+                    Console.WriteLine("Ingen tal i fornavn");
+                    Console.ReadKey();
                     OpretKunde();
                 }
             }
             Console.Write("Efternavn: ");
             string enavn = Console.ReadLine();
             if (enavn.Length < 1) { OpretKunde(); }
+            if (enavn.Length > 40)
+            {
+                Console.WriteLine("Maks 40 tegn i efternavn");
+                Console.ReadKey();
+                OpretKunde();
+            }
             foreach (char c in enavn)
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                 {
+                    Console.WriteLine("Ingen tal i efternavn");
+                    Console.ReadKey();
                     OpretKunde();
                 }
             }
             Console.Write("Adresse: ");
             string adresse = Console.ReadLine();
+            if (adresse.Length > 80)
+            {
+                Console.WriteLine("Maks 80 tegn i adresse");
+                Console.ReadKey();
+                OpretKunde();
+            }
             Console.Write("Alder: ");
             if (int.TryParse(Console.ReadLine(), out int alder)) ;
             else
             {
+                Console.WriteLine("Ingen bogstaver i alder");
+                Console.ReadKey();
                 OpretKunde();
             }
             Kunder.OpretBruger(fnavn, enavn, adresse, alder);
@@ -64,10 +88,18 @@ namespace Project
                     Console.Write("Nyt fornavn: ");
                     nyt = Console.ReadLine();
                     if (nyt.Length < 1) { RedigerKunde(id); }
+                    if (nyt.Length > 20)
+                    {
+                        Console.WriteLine("Maks 20 tegn i fornavn");
+                        Console.ReadKey();
+                        RedigerKunde(id);
+                    }
                     foreach (char c in nyt)
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                         {
+                            Console.WriteLine("Ingen tal i navn");
+                            Console.ReadKey();
                             RedigerKunde(id);
                         }
                     }
@@ -77,10 +109,18 @@ namespace Project
                     Console.Write("Nyt efternavn: ");
                     nyt = Console.ReadLine();
                     if (nyt.Length < 1) { RedigerKunde(id); }
+                    if (nyt.Length > 40)
+                    {
+                        Console.WriteLine("Maks 40 tegn i efternavn");
+                        Console.ReadKey();
+                        RedigerKunde(id);
+                    }
                     foreach (char c in nyt)
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                         {
+                            Console.WriteLine("Ingen tal i navn");
+                            Console.ReadKey();
                             RedigerKunde(id);
                         }
                     }
@@ -89,6 +129,12 @@ namespace Project
                     g = "Adresse";
                     Console.Write("Ny adresse: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 80)
+                    {
+                        Console.WriteLine("Maks 80 tegn i adresse");
+                        Console.ReadKey();
+                        RedigerKunde(id);
+                    }
                     break;
                 case ConsoleKey.D4:
                     g = "Alder";
@@ -96,6 +142,8 @@ namespace Project
                     if (int.TryParse(Console.ReadLine(), out int nyalder)) ;
                     else
                     {
+                        Console.WriteLine("Ingen bogstaver i alder");
+                        Console.ReadKey();
                         RedigerKunde(id);
                     }
                     nyt = nyalder.ToString();
@@ -152,10 +200,28 @@ namespace Project
             Console.WriteLine("Opret en ny bil");
             Console.Write("Registreringsnummer: ");
             string regnr = Console.ReadLine();
+            if (regnr.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("Bil Mærke: ");
             string mærke = Console.ReadLine();
+            if (mærke.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("Bil Model: ");
             string model = Console.ReadLine();
+            if (model.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("Årgang: ");
             if (int.TryParse(Console.ReadLine(), out int årgang)) ;
             else
@@ -170,6 +236,12 @@ namespace Project
             }
             Console.Write("Brændstofstype: ");
             string brnstoftype = Console.ReadLine();
+            if (brnstoftype.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("EjerID: ");
             if (int.TryParse(Console.ReadLine(), out int ejer)) ;
             else
@@ -210,17 +282,35 @@ namespace Project
                     Console.Write("Nyt regnr: ");
                     nyt = Console.ReadLine();
                     if (nyt.Length < 1) { RedigerBil(id); }
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     break;
                 case ConsoleKey.D2:
                     g = "Mærke";
                     Console.Write("Nyt mærke: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
                 case ConsoleKey.D3:
                     g = "Model";
                     Console.Write("Ny model: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
                 case ConsoleKey.D4:
@@ -247,6 +337,12 @@ namespace Project
                     g = "Brændstoftype";
                     Console.Write("Ny brændstoftype: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
             }
