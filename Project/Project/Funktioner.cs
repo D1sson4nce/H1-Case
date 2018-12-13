@@ -287,7 +287,7 @@ namespace Project
                             RedigerBil(bil);
                             break;
                         case ConsoleKey.D3:
-                            besøg.OpretBesøg(bil);
+                            //besøg.OpretBesøg(bil);
 
                             Console.Clear();
                             Console.WriteLine("Besøgstid er nu oprettet");

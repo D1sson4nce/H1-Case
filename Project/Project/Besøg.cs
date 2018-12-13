@@ -62,5 +62,30 @@ namespace Project
                 use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
+
+        public string VælgBesøg(string valgID)
+        {
+            Console.Clear();
+            use.Dt = new DataTable();
+            using (use.Con = new SqlConnection(use.StrCon1))
+            {
+                use.Con.Open();
+                use.Ada = new SqlDataAdapter("select * from Værkstedsophold", use.Con);
+                use.Ada.Fill(use.Dt);
+
+                foreach (DataRow besøg in use.Dt.Rows)
+                {
+                    if (valgID == besøg["ID"].ToString())
+                    {
+                        Console.Write(besøg["ID"] + " | ");
+                        Console.Write(besøg["Bil"] + " ");
+                        Console.Write(besøg["Besøgsdato"]);
+                        Console.WriteLine();
+                        return valgID;
+                    }
+                }
+            }
+            return "Findes Ikke";
+        }
     }
 }
