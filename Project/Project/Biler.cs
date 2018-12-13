@@ -66,7 +66,7 @@ namespace Project
                     string sql = null;
                     Use.Ada = new SqlDataAdapter();
 
-                    sql = $"insert into Biler values ('{regnr}', '{mærke}', '{model}', {årgang}, {km}, '{brnstoftype}', {ejer}, '{DateTime.Now.ToString("dd-MM-yyyy")}')";
+                    sql = $"insert into Biler values ('{bilen.Regnr}', '{bilen.Mærke}', '{bilen.Model}', {bilen.Årgang}, {bilen.Km}, '{bilen.Brnstoftype}', {bilen.Ejer}, '{DateTime.Now.ToString("dd-MM-yyyy")}')";
 
                     Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                     Use.Ada.InsertCommand.ExecuteNonQuery();
