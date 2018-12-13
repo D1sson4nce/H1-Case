@@ -272,9 +272,8 @@ namespace Project
                 bil = Bil.VælgBil(valgbil);
                 if (bil != "Findes Ikke")
                 {
-                    Console.WriteLine("\n[S] Slet bil");
-                    Console.WriteLine("[1] Redigere bil");
-                    Console.WriteLine("[2] Kundens biler");
+                    Console.WriteLine("\n[1] Slet bil");
+                    Console.WriteLine("[2] Redigere bil");
                     Console.WriteLine("[3] Opret Besøgstid til bilen");
                     Console.WriteLine("[4] Vis Bilens Værkstedsbesøg");
                     bilValg = Console.ReadKey(true).Key;
@@ -287,7 +286,7 @@ namespace Project
                             RedigerBil(bil);
                             break;
                         case ConsoleKey.D3:
-                            besøg.OpretBesøg(bil);
+                            OpretBesøg(bil, true);
 
                             Console.Clear();
                             Console.WriteLine("Besøgstid er nu oprettet");
@@ -298,7 +297,7 @@ namespace Project
                             break;
                         case ConsoleKey.D4:
                             besøg.BilBesøg(bil);
-
+                            BilMuligheder();
                             break;
                         case ConsoleKey.Escape:
                             break;
@@ -311,7 +310,7 @@ namespace Project
         #endregion
 
         #region Besøg
-        public void BilBesøg(string bilValg)
+        public void OpretBesøg(string bilValg, bool retOrOpret)
         {
             string dato = null;
             do
@@ -325,9 +324,48 @@ namespace Project
                     Console.WriteLine("Datoen er indtastet forkert!");
                 }
             } while (dato.Length != 16);
-            
 
-            besøg.OpretBesøg(bilValg, dato);
+            if (retOrOpret)
+            {
+                besøg.OpretBesøg(bilValg, dato);
+            }
+            else
+            {
+                besøg.RetBesøg(bilValg, dato);
+            }
+        }
+
+        public void BesøgMuligheder()
+        {
+            string besøger;
+            ConsoleKey besøgValg;
+            bool ud = false;
+            string valgBesøg;
+            Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
+            valgBesøg = Console.ReadLine();
+            while (!ud)
+            {
+                besøger = besøg.VælgBesøg(valgBesøg);
+                if (besøger != "Findes Ikke")
+                {
+                    Console.WriteLine("\n[1] Slet Besøg");
+                    Console.WriteLine("[2] Redigere Besøg");
+                    besøgValg = Console.ReadKey(true).Key;
+                    switch (besøgValg)
+                    {
+                        case ConsoleKey.D1:
+                            besøg.SletBesøg(besøger);
+                            break;
+                        case ConsoleKey.D2:
+                            OpretBesøg(besøger, false);
+                            break;
+                        case ConsoleKey.Escape:
+                            break;
+                    }
+                }
+
+                ud = true;
+            }
         }
         #endregion
     }
