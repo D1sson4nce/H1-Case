@@ -58,7 +58,7 @@ namespace Project
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
 
-                sql = "update Værkstedsophold set Besøgsdato = '" + dato + "'  where Bil = '" + id + "'";
+                sql = "update Værkstedsophold set Besøgsdato = '" + dato + "'  where ID = '" + id + "'";
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
             }
