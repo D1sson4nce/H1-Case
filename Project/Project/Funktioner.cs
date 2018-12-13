@@ -429,6 +429,8 @@ namespace Project
                     break;
                 }
 
+                
+
                 dato = $"{datoDag:n0}-{datoMåned:n0}-{datoÅr:n0} {datoTimer:n0}:{datoMinutter:n0}";
                 trueDate = true;
 
