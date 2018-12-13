@@ -262,7 +262,7 @@ namespace Project
         public void BilMuligheder()
         {
             string bil;
-            ConsoleKey kundeValg;
+            ConsoleKey bilValg;
             bool ud = false;
             string valgbil;
             Console.Write("\nVælg Registreringsnummer eller tryk på alt andet for at gå tilbage: ");
@@ -277,8 +277,8 @@ namespace Project
                     Console.WriteLine("[2] Kundens biler");
                     Console.WriteLine("[3] Opret Besøgstid til bilen");
                     Console.WriteLine("[4] Vis Bilens Værkstedsbesøg");
-                    kundeValg = Console.ReadKey(true).Key;
-                    switch (kundeValg)
+                    bilValg = Console.ReadKey(true).Key;
+                    switch (bilValg)
                     {
                         case ConsoleKey.D1:
                             Bil.SletBil(bil);
@@ -287,8 +287,7 @@ namespace Project
                             RedigerBil(bil);
                             break;
                         case ConsoleKey.D3:
-                            //besøg.OpretBesøg(bil);
-
+                            BilBesøg(bil);
                             Console.Clear();
                             Console.WriteLine("Besøgstid er nu oprettet");
 
@@ -310,5 +309,25 @@ namespace Project
         }
         #endregion
 
+        #region Besøg
+        public void BilBesøg(string bilValg)
+        {
+            string dato = null;
+            do
+            {
+                Console.Clear();
+                Console.Write("Skriv dato for besøget [DD-MM-YYYY HH:MM]: ");
+                dato = Console.ReadLine();
+
+                if (dato.Length != 16)
+                {
+                    Console.WriteLine("Datoen er indtastet forkert!");
+                }
+            } while (dato.Length != 16);
+            
+
+            besøg.OpretBesøg(bilValg, dato);
+        }
+        #endregion
     }
 }
