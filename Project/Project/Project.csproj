@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Besøg.cs" />
+    <Compile Include="Besøget.cs" />
     <Compile Include="Bilen.cs" />
     <Compile Include="Biler.cs" />
     <Compile Include="Funktioner.cs" />
