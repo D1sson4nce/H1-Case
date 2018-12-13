@@ -8,10 +8,6 @@ namespace Project
 {
     class Funktioner
     {
-        Kunder sql = new Kunder();
-        Biler Bil = new Biler();
-        Besøg besøg = new Besøg();
-        
         #region Kunder
         public void OpretKunde()
         {
@@ -45,7 +41,7 @@ namespace Project
             {
                 OpretKunde();
             }
-            sql.OpretBruger(fnavn, enavn, adresse, alder);
+            Kunder.OpretBruger(fnavn, enavn, adresse, alder);
             Console.Clear();
             Program.Kundemenu();
         }
@@ -105,7 +101,7 @@ namespace Project
                     nyt = nyalder.ToString();
                     break;
             }
-            sql.RetKunde(id,g,nyt);
+            Kunder.RetKunde(id,g,nyt);
             Console.Clear();
             Program.Kundemenu();
         }
@@ -120,7 +116,7 @@ namespace Project
             valgKunde = Console.ReadLine();
             while (!ud)
             {
-                kunde = sql.VælgKunde(valgKunde);
+                kunde = Kunder.VælgKunde(valgKunde);
                 if (kunde != "Findes Ikke")
                 {
                     Console.WriteLine("[1] Slet kunde");
@@ -130,13 +126,13 @@ namespace Project
                     switch (kundeValg)
                     {
                         case ConsoleKey.D1:
-                            sql.SletKunde(kunde);
+                            Kunder.SletKunde(kunde);
                             break;
                         case ConsoleKey.D2:
                             RedigerKunde(kunde);
                             break;
                         case ConsoleKey.D3:
-                            sql.KundeBil(kunde);
+                            Kunder.KundeBil(kunde);
                             BilMuligheder();
                             break;
                         case ConsoleKey.Escape:
@@ -180,9 +176,9 @@ namespace Project
             {
                 OpretBil();
             }
-            if (sql.FindKunde(ejer))
+            if (Kunder.FindKunde(ejer))
             {
-                Bil.OpretBil(regnr, mærke, model, årgang, km, brnstoftype, ejer);
+                Biler.OpretBil(regnr, mærke, model, årgang, km, brnstoftype, ejer);
             }
             else
             {
@@ -254,7 +250,7 @@ namespace Project
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
             }
-            Bil.RetBil(id, g, nyt);
+            Biler.RetBil(id, g, nyt);
             Console.Clear();
             Program.Bilmenu();
         }
@@ -269,7 +265,7 @@ namespace Project
             valgbil = Console.ReadLine();
             while (!ud)
             {
-                bil = Bil.VælgBil(valgbil);
+                bil = Biler.VælgBil(valgbil);
                 if (bil != "Findes Ikke")
                 {
                     Console.WriteLine("\n[1] Slet bil");
@@ -280,7 +276,7 @@ namespace Project
                     switch (bilValg)
                     {
                         case ConsoleKey.D1:
-                            Bil.SletBil(bil);
+                            Biler.SletBil(bil);
                             break;
                         case ConsoleKey.D2:
                             RedigerBil(bil);
@@ -296,7 +292,7 @@ namespace Project
                             Console.Clear();
                             break;
                         case ConsoleKey.D4:
-                            besøg.BilBesøg(bil);
+                            Besøg.BilBesøg(bil);
                             BilMuligheder();
                             break;
                         case ConsoleKey.Escape:
@@ -436,11 +432,11 @@ namespace Project
 
             if (retOrOpret)
             {
-                besøg.OpretBesøg(bilValg, dato);
+                Besøg.OpretBesøg(bilValg, dato);
             }
             else
             {
-                besøg.RetBesøg(bilValg, dato);
+                Besøg.RetBesøg(bilValg, dato);
             }
         }
 
@@ -454,7 +450,7 @@ namespace Project
             valgBesøg = Console.ReadLine();
             while (!ud)
             {
-                besøger = besøg.VælgBesøg(valgBesøg);
+                besøger = Besøg.VælgBesøg(valgBesøg);
                 if (besøger != "Findes Ikke")
                 {
                     Console.WriteLine("\n[1] Slet Besøg");
@@ -463,7 +459,7 @@ namespace Project
                     switch (besøgValg)
                     {
                         case ConsoleKey.D1:
-                            besøg.SletBesøg(besøger);
+                            Besøg.SletBesøg(besøger);
                             break;
                         case ConsoleKey.D2:
                             OpretBesøg(besøger, false);
