@@ -13,7 +13,6 @@ namespace Project
         public string Bil
         {
             get { return bil; }
-            set { bil = value; }
         }
 
         private string dato;
@@ -21,7 +20,6 @@ namespace Project
         public string Dato
         {
             get { return dato; }
-            set { dato = value; }
         }
 
         public Besøget(string bil, string dato)
