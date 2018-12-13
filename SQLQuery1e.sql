@@ -36,28 +36,6 @@ create table Biler (
 create table Værkstedsophold (
 	ID int identity primary key,
 	Bil nvarchar(255) Foreign Key References Biler(Regnr),
-	Besøgsdato decimal
+	Besøgsdato nvarchar(16)
 )
 
-insert into Kunder values
-('jontsdfa', 'hejda', 'envej123', 1000, '11-12-2018'),
-('jonasdsasdasdta', 'hejda', 'envdwaadwej123', 1000, '11-12-2018'),
-('jonfsfeta', 'hejda', 'dawd', 1000, '11-12-2018')
-
-insert into Biler values 
-('yes', 'rws', '22', 21, 212, 'yee', 1, '11-12-1221'),
-('wda', 'rws', '22', 21, 212, 'yee', 2, '11-12-1221'),
-('yewws', 'rws', '22', 21, 212, 'yee', 1, '11-12-1221'),
-('da', 'rws', '22', 21, 212, 'yee', 1, '11-12-1221')
-
-select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID
-
-SELECT * FROM Kunder
-
-SELECT Fornavn, Efternavn, Regnr FROM Biler, Kunder WHERE EjerID = ID
-
---delete from Biler where EjerID = 1
---delete from Kunder where ID = 1
-
-
-SELECT * FROM Kunder
