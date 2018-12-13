@@ -16,6 +16,12 @@ namespace Project
             Console.Write("Fornavn: ");
             string fnavn = Console.ReadLine();
             if (fnavn.Length < 1) { OpretKunde(); }
+            if (fnavn.Length > 20)
+            {
+                Console.WriteLine("Maks 20 tegn i fornavn");
+                Console.ReadKey();
+                OpretKunde();
+            }
             foreach(char c in fnavn)
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
@@ -28,6 +34,12 @@ namespace Project
             Console.Write("Efternavn: ");
             string enavn = Console.ReadLine();
             if (enavn.Length < 1) { OpretKunde(); }
+            if (enavn.Length > 40)
+            {
+                Console.WriteLine("Maks 40 tegn i efternavn");
+                Console.ReadKey();
+                OpretKunde();
+            }
             foreach (char c in enavn)
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
@@ -70,6 +82,12 @@ namespace Project
                     Console.Write("Nyt fornavn: ");
                     nyt = Console.ReadLine();
                     if (nyt.Length < 1) { RedigerKunde(id); }
+                    if (nyt.Length > 20)
+                    {
+                        Console.WriteLine("Maks 20 tegn i fornavn");
+                        Console.ReadKey();
+                        RedigerKunde(id);
+                    }
                     foreach (char c in nyt)
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
@@ -85,6 +103,12 @@ namespace Project
                     Console.Write("Nyt efternavn: ");
                     nyt = Console.ReadLine();
                     if (nyt.Length < 1) { RedigerKunde(id); }
+                    if (nyt.Length > 40)
+                    {
+                        Console.WriteLine("Maks 40 tegn i efternavn");
+                        Console.ReadKey();
+                        RedigerKunde(id);
+                    }
                     foreach (char c in nyt)
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
