@@ -539,17 +539,16 @@ namespace Project
                     dato = $"{datoDag.ToString("00")}-{datoMåned.ToString("00")}-{datoÅr.ToString("0000")} {datoTimer.ToString("00")}:{datoMinutter.ToString("00")}";
 
                 } while (trueDate == false);
-
-                if (trueDate)
+            }
+            if (trueDate && retOrOpret || retOrOpret == false)
+            {
+                if (retOrOpret)
                 {
-                    if (retOrOpret)
-                    {
-                        Besøg.OpretBesøg(bilValg, dato);
-                    }
-                    else
-                    {
-                        Besøg.RetBesøg(bilValg, dato);
-                    }
+                    Besøg.OpretBesøg(bilValg, dato);
+                }
+                else
+                {
+                    Besøg.RetBesøg(bilValg, dato);
                 }
             }
         }
