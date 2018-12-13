@@ -8,10 +8,10 @@ using System.Data.SqlClient;
 
 namespace Project
 {
-    class Biler
+    static class Biler
     {
 
-        public void BilListe()
+        static public void BilListe()
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -37,7 +37,7 @@ namespace Project
             }
         }
 
-        public void OpretBil(string regnr, string mærke, string model, int årgang, double km, string brnstoftype, int ejer)
+        static public void OpretBil(string regnr, string mærke, string model, int årgang, double km, string brnstoftype, int ejer)
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -79,7 +79,7 @@ namespace Project
             Console.ReadKey();
         }
 
-        public void BilSøgning(string bilSøg)
+        static public void BilSøgning(string bilSøg)
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -110,7 +110,7 @@ namespace Project
             }
         }
 
-        public string VælgBil(string valgID)
+        static public string VælgBil(string valgID)
         {
             Console.Clear();
             Use.Dt = new DataTable();
@@ -139,7 +139,7 @@ namespace Project
             return "Findes Ikke";
         }
 
-        public void SletBil(string regnr)
+        static public void SletBil(string regnr)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
@@ -157,7 +157,7 @@ namespace Project
             }
         }
 
-        public void RetBil(string id, string info, string nyInfo)
+        static public void RetBil(string id, string info, string nyInfo)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {

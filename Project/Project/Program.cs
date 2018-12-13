@@ -47,7 +47,6 @@ namespace Project
             while (true)
             {
                 Console.Clear();
-                Kunder sql = new Kunder();
                 Funktioner fejlHånd = new Funktioner();
                 Console.WriteLine("Kunde menu");
                 Console.WriteLine();
@@ -68,12 +67,12 @@ namespace Project
                         Console.WriteLine("Søg efter kunde med vilkårlig info");
                         Console.Write("Søg: ");
                         string search = Console.ReadLine();
-                        sql.KundeSøgning(search);
+                        Kunder.KundeSøgning(search);
                         fejlHånd.KundeMuligheder();
                         break;
 
                     case ConsoleKey.D3:
-                        sql.KundeListe();
+                        Kunder.KundeListe();
                         fejlHånd.KundeMuligheder();
                         break;
 
@@ -91,12 +90,12 @@ namespace Project
             {
                 Console.Clear();
                 Funktioner fejlHånd = new Funktioner();
-                Biler biler = new Biler();
+
                 Console.WriteLine("Bil menu");
                 Console.WriteLine();
                 Console.WriteLine("[1] Opret bil");
                 Console.WriteLine("[2] Søg efter bil");
-                Console.WriteLine("[3] Liste over biler");
+                Console.WriteLine("[3] Liste over Biler");
                 Console.WriteLine("[ESC] Tryk ESC for at lukke");
                 Console.Write("Valg: ");
                 ConsoleKey menuValg = Console.ReadKey(true).Key;
@@ -111,13 +110,13 @@ namespace Project
                         Console.WriteLine("Søg efter kunde med vilkårlig info");
                         Console.Write("Søg: ");
                         string bil = Console.ReadLine();
-                        biler.BilSøgning(bil);
+                        Biler.BilSøgning(bil);
                         fejlHånd.BilMuligheder();
                         Console.ReadKey();
                         break;
 
                     case ConsoleKey.D3:
-                        biler.BilListe();
+                        Biler.BilListe();
                         fejlHånd.BilMuligheder();
                         Console.ReadKey();
                         break;
