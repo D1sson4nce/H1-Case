@@ -20,6 +20,8 @@ namespace Project
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                 {
+                    Console.WriteLine("Ingen tal i fornavn");
+                    Console.ReadKey();
                     OpretKunde();
                 }
             }
@@ -30,6 +32,8 @@ namespace Project
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                 {
+                    Console.WriteLine("Ingen tal i efternavn");
+                    Console.ReadKey();
                     OpretKunde();
                 }
             }
@@ -39,6 +43,8 @@ namespace Project
             if (int.TryParse(Console.ReadLine(), out int alder)) ;
             else
             {
+                Console.WriteLine("Ingen bogstaver i alder");
+                Console.ReadKey();
                 OpretKunde();
             }
             Kunder.OpretBruger(fnavn, enavn, adresse, alder);
@@ -68,6 +74,8 @@ namespace Project
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                         {
+                            Console.WriteLine("Ingen tal i navn");
+                            Console.ReadKey();
                             RedigerKunde(id);
                         }
                     }
@@ -81,6 +89,8 @@ namespace Project
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                         {
+                            Console.WriteLine("Ingen tal i navn");
+                            Console.ReadKey();
                             RedigerKunde(id);
                         }
                     }
@@ -96,6 +106,8 @@ namespace Project
                     if (int.TryParse(Console.ReadLine(), out int nyalder)) ;
                     else
                     {
+                        Console.WriteLine("Ingen bogstaver i alder");
+                        Console.ReadKey();
                         RedigerKunde(id);
                     }
                     nyt = nyalder.ToString();
