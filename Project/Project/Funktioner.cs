@@ -200,10 +200,28 @@ namespace Project
             Console.WriteLine("Opret en ny bil");
             Console.Write("Registreringsnummer: ");
             string regnr = Console.ReadLine();
+            if (regnr.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("Bil Mærke: ");
             string mærke = Console.ReadLine();
+            if (mærke.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("Bil Model: ");
             string model = Console.ReadLine();
+            if (model.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("Årgang: ");
             if (int.TryParse(Console.ReadLine(), out int årgang)) ;
             else
@@ -218,6 +236,12 @@ namespace Project
             }
             Console.Write("Brændstofstype: ");
             string brnstoftype = Console.ReadLine();
+            if (brnstoftype.Length > 255)
+            {
+                Console.WriteLine("Ikke længere end 255 tegn");
+                Console.ReadKey();
+                OpretBil();
+            }
             Console.Write("EjerID: ");
             if (int.TryParse(Console.ReadLine(), out int ejer)) ;
             else
@@ -258,17 +282,35 @@ namespace Project
                     Console.Write("Nyt regnr: ");
                     nyt = Console.ReadLine();
                     if (nyt.Length < 1) { RedigerBil(id); }
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     break;
                 case ConsoleKey.D2:
                     g = "Mærke";
                     Console.Write("Nyt mærke: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
                 case ConsoleKey.D3:
                     g = "Model";
                     Console.Write("Ny model: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
                 case ConsoleKey.D4:
@@ -295,6 +337,12 @@ namespace Project
                     g = "Brændstoftype";
                     Console.Write("Ny brændstoftype: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 255)
+                    {
+                        Console.WriteLine("Ikke længere end 255 tegn");
+                        Console.ReadKey();
+                        RedigerBil(id);
+                    }
                     if (nyt.Length < 1) { RedigerBil(id); }
                     break;
             }
