@@ -9,10 +9,11 @@ using System.Data.SqlClient;
 
 namespace Project
 {
-    class Kunder
+    static class Kunder
     {
+        
 
-        public void KundeListe()
+        static public void KundeListe()
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -35,7 +36,7 @@ namespace Project
             }
         }
 
-        public void KundeSøgning(string søgning)
+        static public void KundeSøgning(string søgning)
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -62,22 +63,24 @@ namespace Project
             }
         }
 
-        public void OpretBruger(string fornavn, string efternavn, string adresse, int alder)
+        static public void OpretBruger(string fornavn, string efternavn, string adresse, int alder)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
+                Kunden kunde = new Kunden(fornavn, efternavn, adresse, alder);
+
                 Use.Con.Open();
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
 
-                sql = "insert into Kunder values('" + fornavn + "', '" + efternavn + "', '" + adresse + "', " + alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
+                sql = "insert into Kunder values('" + kunde.Fnavn + "', '" + kunde.Enavn + "', '" + kunde.Adresse + "', " + kunde.Alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
 
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
         
-        public string VælgKunde(string valgID)
+        static public string VælgKunde(string valgID)
         {
             Console.Clear();
             Use.Dt = new DataTable();
@@ -105,7 +108,7 @@ namespace Project
             return "Findes Ikke";
         }
 
-        public void SletKunde(string id)
+        static public void SletKunde(string id)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
@@ -123,7 +126,7 @@ namespace Project
             }
         }
 
-        public void RetKunde(string id, string info, string nyInfo)
+        static public void RetKunde(string id, string info, string nyInfo)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
@@ -137,7 +140,7 @@ namespace Project
             }
         }
 
-        public bool FindKunde(int id)
+        static public bool FindKunde(int id)
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -157,7 +160,7 @@ namespace Project
             return false;
         }
 
-        public void KundeBil(string id)
+        static public void KundeBil(string id)
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))

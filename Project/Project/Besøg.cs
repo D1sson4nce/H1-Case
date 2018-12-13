@@ -8,10 +8,10 @@ using System.Data.SqlClient;
 
 namespace Project
 {
-    class Besøg
+    static class Besøg
     {
 
-        public void BilBesøg(string id)
+        static public void BilBesøg(string id)
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -33,7 +33,7 @@ namespace Project
             }
         }
 
-        public void OpretBesøg(string id, string dato)
+        static public void OpretBesøg(string id, string dato)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
@@ -48,7 +48,7 @@ namespace Project
             }
         }
 
-        public void RetBesøg(string id, string dato)
+        static public void RetBesøg(string id, string dato)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
@@ -62,7 +62,7 @@ namespace Project
             }
         }
 
-        public string VælgBesøg(string valgID)
+        static public string VælgBesøg(string valgID)
         {
             Console.Clear();
             Use.Dt = new DataTable();
@@ -87,7 +87,7 @@ namespace Project
             return "Findes Ikke";
         }
 
-        public void SletBesøg (string id)
+        static public void SletBesøg (string id)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
