@@ -11,6 +11,7 @@ namespace Project
         Kunder sql = new Kunder();
         Biler Bil = new Biler();
         Besøg besøg = new Besøg();
+        
         #region Kunder
         public void OpretKunde()
         {
@@ -48,6 +49,7 @@ namespace Project
             Console.Clear();
             Program.Kundemenu();
         }
+
         public void RedigerKunde(string id)
         {
             Console.Clear();
@@ -107,6 +109,7 @@ namespace Project
             Console.Clear();
             Program.Kundemenu();
         }
+
         public void KundeMuligheder()
         {
             string kunde;
@@ -145,6 +148,7 @@ namespace Project
             }
         }
         #endregion
+        
         #region Biler
         public void OpretBil()
         {
@@ -189,6 +193,7 @@ namespace Project
             Console.Clear();
             Program.Bilmenu();
         }
+
         public void RedigerBil(string id)
         {
             Console.Clear();
@@ -253,6 +258,7 @@ namespace Project
             Console.Clear();
             Program.Bilmenu();
         }
+
         public void BilMuligheder()
         {
             string bil;
@@ -292,6 +298,7 @@ namespace Project
                             break;
                         case ConsoleKey.D4:
                             besøg.BilBesøg(bil);
+
                             break;
                         case ConsoleKey.Escape:
                             break;
