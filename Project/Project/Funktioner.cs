@@ -389,7 +389,7 @@ namespace Project
                             break;
                         case ConsoleKey.D4:
                             Besøg.BilBesøg(bil);
-                            BilMuligheder();
+                            BesøgMuligheder();
                             break;
                         case ConsoleKey.Escape:
                             break;
