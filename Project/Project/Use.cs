@@ -10,6 +10,7 @@ namespace Project
 {
     static class Use
     {
+        //Viser vejen til databasen
         static private string strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";
 
         static public string StrCon1
