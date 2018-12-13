@@ -34,7 +34,7 @@ namespace Project
             }
         }
 
-        public void OpretBesøg(string id)
+        public void OpretBesøg(string id, string dato)
         {
             using (use.Con = new SqlConnection(use.StrCon1))
             {
@@ -42,8 +42,22 @@ namespace Project
                 string sql = "";
                 use.Ada = new SqlDataAdapter();
 
-                sql = "insert into Værkstedsophold values('" + id + "', '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
+                sql = "insert into Værkstedsophold values('" + id + "', '" + dato + "')";
 
+                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
+                use.Ada.InsertCommand.ExecuteNonQuery();
+            }
+        }
+
+        public void RetBesøg(string id, string dato)
+        {
+            using (use.Con = new SqlConnection(use.StrCon1))
+            {
+                use.Con.Open();
+                string sql = "";
+                use.Ada = new SqlDataAdapter();
+
+                sql = "update Værkstedsophold set Besøgsdato = '" + dato + "'  where Bil = '" + id + "'";
                 use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
                 use.Ada.InsertCommand.ExecuteNonQuery();
             }

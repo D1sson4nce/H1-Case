@@ -15,7 +15,6 @@ namespace Project
         public string StrCon1
         {
             get { return strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI"; }
-            private set { strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";; }
         }
 
         public SqlConnection Con { get; set; }
