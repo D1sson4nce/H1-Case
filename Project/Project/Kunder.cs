@@ -11,6 +11,7 @@ namespace Project
 {
     static class Kunder
     {
+        
 
         static public void KundeListe()
         {
@@ -66,11 +67,13 @@ namespace Project
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
+                Kunden kunde = new Kunden(fornavn, efternavn, adresse, alder);
+
                 Use.Con.Open();
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
 
-                sql = "insert into Kunder values('" + fornavn + "', '" + efternavn + "', '" + adresse + "', " + alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
+                sql = "insert into Kunder values('" + kunde.Fnavn + "', '" + kunde.Enavn + "', '" + kunde.Adresse + "', " + kunde.Alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
 
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
