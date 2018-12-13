@@ -51,6 +51,12 @@ namespace Project
             }
             Console.Write("Adresse: ");
             string adresse = Console.ReadLine();
+            if (adresse.Length > 80)
+            {
+                Console.WriteLine("Maks 80 tegn i adresse");
+                Console.ReadKey();
+                OpretKunde();
+            }
             Console.Write("Alder: ");
             if (int.TryParse(Console.ReadLine(), out int alder)) ;
             else
@@ -123,6 +129,12 @@ namespace Project
                     g = "Adresse";
                     Console.Write("Ny adresse: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length > 80)
+                    {
+                        Console.WriteLine("Maks 80 tegn i adresse");
+                        Console.ReadKey();
+                        RedigerKunde(id);
+                    }
                     break;
                 case ConsoleKey.D4:
                     g = "Alder";
