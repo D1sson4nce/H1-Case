@@ -10,19 +10,18 @@ namespace Project
 {
     class Biler
     {
-        Use use = new Use();
 
         public void BilListe()
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID order by EjerID", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID order by EjerID", Use.Con);
+                Use.Ada.Fill(Use.Dt);
                 Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype | Ejer \n");
 
-                foreach (DataRow bil in use.Dt.Rows)
+                foreach (DataRow bil in Use.Dt.Rows)
                 {
                     Console.Write(bil["Regnr"] + " | ");
                     Console.Write(bil["Mærke"] + " | ");
@@ -40,14 +39,14 @@ namespace Project
 
         public void OpretBil(string regnr, string mærke, string model, int årgang, double km, string brnstoftype, int ejer)
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string e = "wad";
                 bool bilFindes = false;
                 // Tjekker om en bil findes i databasen, før bilen kan blive oprettet
-                foreach (DataRow bil in use.Dt.Rows)
+                foreach (DataRow bil in Use.Dt.Rows)
                 {
                     if (e == bil["Regnr"].ToString())
                     {
@@ -63,12 +62,12 @@ namespace Project
                 if (bilFindes == false)
                 {
                     string sql = null;
-                    use.Ada = new SqlDataAdapter();
+                    Use.Ada = new SqlDataAdapter();
 
                     sql = $"insert into Biler values ('{regnr}', '{mærke}', '{model}', {årgang}, {km}, '{brnstoftype}', {ejer}, '{DateTime.Now.ToString("dd-MM-yyyy")}')";
 
-                    use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                    use.Ada.InsertCommand.ExecuteNonQuery();
+                    Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                    Use.Ada.InsertCommand.ExecuteNonQuery();
                 }
                 // Hvis bilen findes i databasen, skal den oplyse det og afbryde aktionen
                 else
@@ -82,21 +81,21 @@ namespace Project
 
         public void BilSøgning(string bilSøg)
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter($"select * from Biler where Regnr like '{bilSøg}%'" +
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter($"select * from Biler where Regnr like '{bilSøg}%'" +
                                              $"or Mærke like '{bilSøg}%'" +
                                              $"or Model like '{bilSøg}%'" +
                                              $"or Årgang like '{bilSøg}%'" +
                                              $"or Km like '{bilSøg}%'" +
                                              $"or Brændstoftype like '{bilSøg}%'" +
-                                             $"or EjerID like '{bilSøg}%'", use.Con);
-                use.Ada.Fill(use.Dt);
+                                             $"or EjerID like '{bilSøg}%'", Use.Con);
+                Use.Ada.Fill(Use.Dt);
                 Console.WriteLine("Regnr | Mærke | Model | Årgang | Kilometer | Brændstoftype | Ejer ID | Oprettelses dato");
 
-                foreach (DataRow bil in use.Dt.Rows)
+                foreach (DataRow bil in Use.Dt.Rows)
                 {
                     Console.Write(bil["Regnr"] + " | ");
                     Console.Write(bil["Mærke"] + " | ");
@@ -114,14 +113,14 @@ namespace Project
         public string VælgBil(string valgID)
         {
             Console.Clear();
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID", Use.Con);
+                Use.Ada.Fill(Use.Dt);
 
-                foreach (DataRow bil in use.Dt.Rows)
+                foreach (DataRow bil in Use.Dt.Rows)
                 {
                     if (valgID == bil["Regnr"].ToString())
                     {
@@ -142,33 +141,33 @@ namespace Project
 
         public void SletBil(string regnr)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "delete from Værkstedsophold where Bil = '" + regnr + "'";
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
 
                 sql = "delete from Biler where Regnr = '" + regnr + "'";
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
 
         public void RetBil(string id, string info, string nyInfo)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "update Biler set " + info + " = '" + nyInfo + "'  where Regnr = '" + id + "'";
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
     }

@@ -8,18 +8,18 @@ using System.Data.SqlClient;
 
 namespace Project
 {
-    class Use
+    static class Use
     {
-        private string strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";
+        static private string strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI";
 
-        public string StrCon1
+        static public string StrCon1
         {
             get { return strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI"; }
         }
 
-        public SqlConnection Con { get; set; }
-        public SqlDataAdapter Ada { get; set; }
-        public DataTable Dt { get; set; }
+        static public SqlConnection Con { get; set; }
+        static public SqlDataAdapter Ada { get; set; }
+        static public DataTable Dt { get; set; }
         
 
     }

@@ -10,19 +10,18 @@ namespace Project
 {
     class Besøg
     {
-        Use use = new Use();
 
         public void BilBesøg(string id)
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select * from Værkstedsophold where Bil = '" + id + "'", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select * from Værkstedsophold where Bil = '" + id + "'", Use.Con);
+                Use.Ada.Fill(Use.Dt);
                 Console.WriteLine("\nBesøgs ID | Besøgsdag\n");
 
-                foreach (DataRow bil in use.Dt.Rows)
+                foreach (DataRow bil in Use.Dt.Rows)
                 {
                     if (id == bil["Bil"].ToString())
                     {
@@ -36,44 +35,44 @@ namespace Project
 
         public void OpretBesøg(string id, string dato)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "insert into Værkstedsophold values('" + id + "', '" + dato + "')";
 
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
 
         public void RetBesøg(string id, string dato)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "update Værkstedsophold set Besøgsdato = '" + dato + "'  where Bil = '" + id + "'";
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
 
         public string VælgBesøg(string valgID)
         {
             Console.Clear();
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select * from Værkstedsophold", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select * from Værkstedsophold", Use.Con);
+                Use.Ada.Fill(Use.Dt);
 
-                foreach (DataRow besøg in use.Dt.Rows)
+                foreach (DataRow besøg in Use.Dt.Rows)
                 {
                     if (valgID == besøg["ID"].ToString())
                     {
@@ -90,15 +89,15 @@ namespace Project
 
         public void SletBesøg (string id)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "delete from Værkstedsophold where ID = " + id;
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
     }

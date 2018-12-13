@@ -11,19 +11,18 @@ namespace Project
 {
     class Kunder
     {
-        Use use = new Use();
 
         public void KundeListe()
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select * from Kunder", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select * from Kunder", Use.Con);
+                Use.Ada.Fill(Use.Dt);
                 Console.WriteLine("ID | Navn | Adresse | Alder | Oprettelsesdato \n");
 
-                foreach (DataRow kunde in use.Dt.Rows)
+                foreach (DataRow kunde in Use.Dt.Rows)
                 {
                     Console.Write(kunde["ID"] + " | ");
                     Console.Write(kunde["Fornavn"] + " ");
@@ -38,19 +37,19 @@ namespace Project
 
         public void KundeSøgning(string søgning)
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select * from Kunder where ID like '" + søgning + "%' " +
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select * from Kunder where ID like '" + søgning + "%' " +
                 "or Fornavn like '" + søgning + "%' " +
                 "or Efternavn like '" + søgning + "%' " +
                 "or Adresse like '" + søgning + "%' " +
-                "or Alder like '" + søgning + "%'", use.Con);
-                use.Ada.Fill(use.Dt);
+                "or Alder like '" + søgning + "%'", Use.Con);
+                Use.Ada.Fill(Use.Dt);
                 Console.WriteLine("ID | Navn | Adresse | Alder | Oprettelsesdato \n");
 
-                foreach (DataRow kunde in use.Dt.Rows)
+                foreach (DataRow kunde in Use.Dt.Rows)
                 {
                     Console.Write(kunde["ID"] + " | ");
                     Console.Write(kunde["Fornavn"] + " ");
@@ -65,30 +64,30 @@ namespace Project
 
         public void OpretBruger(string fornavn, string efternavn, string adresse, int alder)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "insert into Kunder values('" + fornavn + "', '" + efternavn + "', '" + adresse + "', " + alder + ", '" + DateTime.Now.ToString("dd-MM-yyyy") + "')";
 
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
         
         public string VælgKunde(string valgID)
         {
             Console.Clear();
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select * from Kunder", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select * from Kunder", Use.Con);
+                Use.Ada.Fill(Use.Dt);
 
-                foreach (DataRow kunde in use.Dt.Rows)
+                foreach (DataRow kunde in Use.Dt.Rows)
                 {
                     if (valgID == kunde["ID"].ToString())
                     {
@@ -108,46 +107,46 @@ namespace Project
 
         public void SletKunde(string id)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "delete from Biler where EjerID = " + id;
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
 
                 sql = "delete from Kunder where ID = " + id;
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
 
         public void RetKunde(string id, string info, string nyInfo)
         {
-            using (use.Con = new SqlConnection(use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
+                Use.Con.Open();
                 string sql = "";
-                use.Ada = new SqlDataAdapter();
+                Use.Ada = new SqlDataAdapter();
 
                 sql = "update Kunder set " + info + " = '" + nyInfo + "'  where ID = " + id;
-                use.Ada.InsertCommand = new SqlCommand(sql, use.Con);
-                use.Ada.InsertCommand.ExecuteNonQuery();
+                Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                Use.Ada.InsertCommand.ExecuteNonQuery();
             }
         }
 
         public bool FindKunde(int id)
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select ID from Kunder", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select ID from Kunder", Use.Con);
+                Use.Ada.Fill(Use.Dt);
 
-                foreach (DataRow kunde in use.Dt.Rows)
+                foreach (DataRow kunde in Use.Dt.Rows)
                 {
                     if (id.ToString() == kunde["ID"].ToString())
                     {
@@ -160,15 +159,15 @@ namespace Project
 
         public void KundeBil(string id)
         {
-            use.Dt = new DataTable();
-            using (use.Con = new SqlConnection(use.StrCon1))
+            Use.Dt = new DataTable();
+            using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                use.Con.Open();
-                use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Biler.Opretdato, ID from Biler join Kunder on EjerID = ID", use.Con);
-                use.Ada.Fill(use.Dt);
+                Use.Con.Open();
+                Use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Biler.Opretdato, ID from Biler join Kunder on EjerID = ID", Use.Con);
+                Use.Ada.Fill(Use.Dt);
                 Console.WriteLine("\nRegistreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype | Oprettelsesdato \n");
 
-                foreach (DataRow bil in use.Dt.Rows)
+                foreach (DataRow bil in Use.Dt.Rows)
                 {
                     if (id == bil["ID"].ToString())
                     {
