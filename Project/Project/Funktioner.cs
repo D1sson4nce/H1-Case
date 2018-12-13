@@ -554,7 +554,6 @@ namespace Project
             }
         }
             
-
         public void BesøgMuligheder()
         {
             string besøger;
