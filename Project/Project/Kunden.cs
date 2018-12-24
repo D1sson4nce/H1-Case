@@ -43,5 +43,10 @@ namespace Project
             this.adresse = adresse;
             this.alder = alder;
         }
+
+        public Kunden()
+        {
+
+        }
     }
 }

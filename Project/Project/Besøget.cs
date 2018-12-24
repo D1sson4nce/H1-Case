@@ -27,5 +27,10 @@ namespace Project
             this.bil = bil;
             this.dato = dato;
         }
+
+        public Besøget()
+        {
+
+        }
     }
 }

@@ -33,11 +33,11 @@ namespace Project
             }
         }
 
-        static public void OpretBesøg(string id, string dato)
+        static public void OpretBesøg()
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                Besøget besøget = new Besøget(id, dato);
+                Besøget besøget = new Besøget();
 
                 Use.Con.Open();
                 string sql = "";

@@ -65,7 +65,8 @@ namespace Project
                 Console.ReadKey();
                 OpretKunde();
             }
-            Kunder.OpretBruger(fnavn, enavn, adresse, alder);
+            Kunden kunden = new Kunden(fnavn, enavn, adresse, alder);
+            Kunder.OpretBruger();
             Console.Clear();
             Program.Kundemenu();
         }
@@ -250,7 +251,8 @@ namespace Project
             }
             if (Kunder.FindKunde(ejer))
             {
-                Biler.OpretBil(regnr, mærke, model, årgang, km, brnstoftype, ejer);
+                Bilen bilen = new Bilen(regnr, mærke, model, årgang, km, brnstoftype, ejer);
+                Biler.OpretBil();
             }
             else
             {
@@ -544,7 +546,8 @@ namespace Project
             {
                 if (retOrOpret)
                 {
-                    Besøg.OpretBesøg(bilValg, dato);
+                    Besøget besøget = new Besøget(bilValg, dato);
+                    Besøg.OpretBesøg();
                 }
                 else
                 {
