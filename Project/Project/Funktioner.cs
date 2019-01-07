@@ -507,7 +507,7 @@ namespace Project
                 trueDate = true; //hvis man er nået hertil så er alt godt
             }
             
-            if (trueDate && retOrOpret || retOrOpret == false)
+            if (trueDate && retOrOpret || !retOrOpret)
             {
                 if (retOrOpret)
                 {
@@ -518,6 +518,7 @@ namespace Project
                     Besøg.RetBesøg(bilValg, dato);
                 }
             }
+            BilMuligheder();
         }
             
         public void BesøgMuligheder()
