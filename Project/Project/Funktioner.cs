@@ -502,8 +502,6 @@ namespace Project
                     break;
                 }
                 dato = $"{datoDag.ToString("00")}-{datoMåned.ToString("00")}-{datoÅr.ToString("0000")} {datoTimer.ToString("00")}:{datoMinutter.ToString("00")}";
-                Console.WriteLine(dato);
-                Console.ReadKey();
                 trueDate = true; //hvis man er nået hertil så er alt godt og programmet går ud af while loopet med denne bool
             }
             if (trueDate && retOrOpret || retOrOpret == false)
