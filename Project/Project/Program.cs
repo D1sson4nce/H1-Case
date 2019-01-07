@@ -119,7 +119,6 @@ namespace Project
                         break;
 
                     case ConsoleKey.D3:
-                        Biler.BilListe();
                         fejlHånd.BilMuligheder();
                         Console.ReadKey();
                         break;

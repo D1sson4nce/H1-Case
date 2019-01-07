@@ -11,7 +11,7 @@ namespace Project
 {
     static class Kunder
     {
-        //en metode der henter alle kunder, og deres informationer, fra databasen og udskriver dem
+        //metoden henter alle kunder, og deres informationer, fra databasen og udskriver dem
         static public void KundeListe()
         {
             Use.Dt = new DataTable();
@@ -35,6 +35,7 @@ namespace Project
             }
         }
 
+        //Metoden tager det input brugeren har skrevet og udskriver alle de kunder som har noget tilfældes med inputtet
         static public void KundeSøgning(string søgning)
         {
             Use.Dt = new DataTable();
@@ -62,6 +63,7 @@ namespace Project
             }
         }
 
+        //Metoden tager indformation brugeren har indtaster til oprettelsen af en kunde og lægger den ind i databasen
         static public void OpretBruger(string fnavn, string enavn, string adresse, int alder)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -79,6 +81,7 @@ namespace Project
             }
         }
         
+        //Her tager den det id der er blevet inputtet for at se om den findes. Hvis den findes returner den det ID, hvis den ikke findes returner den "findes ikke"
         static public string VælgKunde(string valgID)
         {
             Console.Clear();
@@ -107,6 +110,7 @@ namespace Project
             return "Findes Ikke";
         }
 
+        //
         static public void SletKunde(string id)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -114,6 +118,16 @@ namespace Project
                 Use.Con.Open();
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
+
+                Use.Ada = new SqlDataAdapter("select Regnr from Biler where EjerID = " + id, Use.Con);
+                Use.Ada.Fill(Use.Dt);
+
+                foreach (DataRow bilnr in Use.Dt.Rows)
+                {
+                    sql = "delete from Værkstedsophold where Bil = '" + bilnr["Regnr"] + "'";
+                    Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                    Use.Ada.InsertCommand.ExecuteNonQuery();
+                }                
 
                 sql = "delete from Biler where EjerID = " + id;
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
