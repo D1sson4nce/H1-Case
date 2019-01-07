@@ -8,6 +8,7 @@ namespace Project
 {
     class Kunden
     {
+        // En property som holder en string variable af kundens fornavn
         private string fnavn;
 
         public string Fnavn
@@ -15,6 +16,7 @@ namespace Project
             get { return fnavn; }
         }
 
+        // En property som holder en string variable af kundens efternavn
         private string enavn;
 
         public string Enavn
@@ -22,6 +24,7 @@ namespace Project
             get { return enavn; }
         }
 
+        // En property som holder en string variable af kundens adresse
         private string adresse;
 
         public string Adresse
@@ -29,13 +32,15 @@ namespace Project
             get { return adresse; }
         }
 
+        // En property som holder en int variable af kundens alder
         private int alder;
 
         public int Alder
         {
             get { return alder; }
         }
-        
+
+        // En public constructor som samler kundens informationer
         public Kunden(string fnavn, string enavn, string adresse, int alder)
         {
             this.fnavn = fnavn;
