@@ -505,7 +505,7 @@ namespace Project
                 OpretBesøg(bilValg, retOrOpret);
             }
             dato = $"{datoDag.ToString("00")}-{datoMåned.ToString("00")}-{datoÅr.ToString("0000")} {datoTimer.ToString("00")}:{datoMinutter.ToString("00")}";
-            trueDate = true; //hvis man er nået hertil så er alt godt og programmet går ud af while loopet med denne bool
+            trueDate = true; //hvis man er nået hertil så er alt godt
             
             if (trueDate && retOrOpret || retOrOpret == false)
             {
