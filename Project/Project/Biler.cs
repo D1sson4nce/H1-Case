@@ -13,15 +13,16 @@ namespace Project
 
         static public void BilListe()
         {
+            // en metode der viser alle biler i databasen
             Use.Dt = new DataTable();
-            using (Use.Con = new SqlConnection(Use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1)) //bruger en streng fra Use klassen til at åbne databasen
             {
                 Use.Con.Open();
                 Use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID order by EjerID", Use.Con);
-                Use.Ada.Fill(Use.Dt);
+                Use.Ada.Fill(Use.Dt); // fylder et data table med informationerne fra databasen
                 Console.WriteLine("Registreringsnummer | Mærke | Model | Årgang | KM | Brændstoftype | Ejer \n");
 
-                foreach (DataRow bil in Use.Dt.Rows)
+                foreach (DataRow bil in Use.Dt.Rows) //udskriver alle informationerne per bil fra data table Dt
                 {
                     Console.Write(bil["Regnr"] + " | ");
                     Console.Write(bil["Mærke"] + " | ");
@@ -40,7 +41,7 @@ namespace Project
         static public void OpretBil(string regnr, string mærke, string model, int årgang, double km, string brnstoftype, int ejer)
         {
             Use.Dt = new DataTable();
-            using (Use.Con = new SqlConnection(Use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1)) //bruger en streng fra Use klassen til at åbne databasen
             {
                 Bilen bilen = new Bilen(regnr, mærke, model, årgang, km, brnstoftype, ejer);
 
@@ -96,7 +97,7 @@ namespace Project
                                              $"or EjerID like '{bilSøg}%'", Use.Con);
                 Use.Ada.Fill(Use.Dt);
                 Console.WriteLine("Regnr | Mærke | Model | Årgang | Kilometer | Brændstoftype | Ejer ID | Oprettelses dato");
-
+                //udskriver information om den bil brugeren har søgt efter
                 foreach (DataRow bil in Use.Dt.Rows)
                 {
                     Console.Write(bil["Regnr"] + " | ");
@@ -116,15 +117,16 @@ namespace Project
         {
             Console.Clear();
             Use.Dt = new DataTable();
-            using (Use.Con = new SqlConnection(Use.StrCon1))
+            using (Use.Con = new SqlConnection(Use.StrCon1)) //bruger en streng fra Use klassen til at åbne databasen
             {
                 Use.Con.Open();
+                //vælger data fra databasen ved at bruge denne kommando i SQL
                 Use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, Fornavn, Efternavn, Biler.Opretdato from Biler join Kunder on EjerID = ID", Use.Con);
                 Use.Ada.Fill(Use.Dt);
 
                 foreach (DataRow bil in Use.Dt.Rows)
                 {
-                    if (valgID == bil["Regnr"].ToString())
+                    if (valgID == bil["Regnr"].ToString()) //hvis en bil med indtastet regnr findes så udskrives informationen om bilen
                     {
                         Console.Write(bil["Regnr"] + " | ");
                         Console.Write(bil["Mærke"] + " | ");
@@ -149,10 +151,12 @@ namespace Project
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
 
+                //sletter bilen med det givne regnr fra Værkstedsophold
                 sql = "delete from Værkstedsophold where Bil = '" + regnr + "'";
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
 
+                //sletter bilen med det givne regnr fra Biler
                 sql = "delete from Biler where Regnr = '" + regnr + "'";
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
@@ -167,6 +171,7 @@ namespace Project
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
 
+                //opdaterer bilen med det givne information ud fra regnr
                 sql = "update Biler set " + info + " = '" + nyInfo + "'  where Regnr = '" + id + "'";
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
