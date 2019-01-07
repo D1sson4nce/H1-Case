@@ -9,13 +9,13 @@ namespace Project
     class Funktioner
     {
         #region Kunder
-        public void OpretKunde()
+        public void OpretKunde() // metode der bruges til at oprette kunder
         {
             Console.Clear();
             Console.WriteLine("Opret en ny kunde");
             Console.Write("Fornavn: ");
             string fnavn = Console.ReadLine();
-            if (fnavn.Length < 1) { OpretKunde(); }
+            if (fnavn.Length < 1) { OpretKunde(); } //her tjekker den om fornavn er fin længde, både over 0 og under 20
             if (fnavn.Length > 20)
             {
                 Console.WriteLine("Maks 20 tegn i fornavn");
@@ -26,6 +26,7 @@ namespace Project
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                 {
+                    //her tjekker den om der er tal i strengen, ved at gå igennem alle chars
                     Console.WriteLine("Ingen tal i fornavn");
                     Console.ReadKey();
                     OpretKunde();
@@ -33,7 +34,7 @@ namespace Project
             }
             Console.Write("Efternavn: ");
             string enavn = Console.ReadLine();
-            if (enavn.Length < 1) { OpretKunde(); }
+            if (enavn.Length < 1) { OpretKunde(); } //her tjekker den om efternavn er fin længde, både over 0 og under 40
             if (enavn.Length > 40)
             {
                 Console.WriteLine("Maks 40 tegn i efternavn");
@@ -44,6 +45,7 @@ namespace Project
             {
                 if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                 {
+                    //her tjekker den om der er tal i strengen, ved at gå igennem alle chars
                     Console.WriteLine("Ingen tal i efternavn");
                     Console.ReadKey();
                     OpretKunde();
@@ -51,43 +53,44 @@ namespace Project
             }
             Console.Write("Adresse: ");
             string adresse = Console.ReadLine();
-            if (adresse.Length > 80)
+            if (adresse.Length > 80) //her tjekker den om adressen er fin længde
             {
                 Console.WriteLine("Maks 80 tegn i adresse");
                 Console.ReadKey();
                 OpretKunde();
             }
             Console.Write("Alder: ");
-            if (int.TryParse(Console.ReadLine(), out int alder)) ;
+            if (int.TryParse(Console.ReadLine(), out int alder)) ; //her tjekker den om der er bogstaver i tallet
             else
             {
                 Console.WriteLine("Ingen bogstaver i alder");
                 Console.ReadKey();
                 OpretKunde();
             }
-            Kunder.OpretBruger(fnavn, enavn, adresse, alder);
+            Kunder.OpretBruger(fnavn, enavn, adresse, alder); //kalder metoden OpretBruger i Kunder klassen, med de informationer brugeren har givet
             Console.Clear();
-            Program.Kundemenu();
+            Program.Kundemenu(); //går tilbage til kundemenuen
         }
 
         public void RedigerKunde(string id)
         {
+            //dette er en "menu" hvor man har flere valg
             Console.Clear();
             Console.WriteLine("Hvad vil du ændre:");
             Console.WriteLine("[1] Fornavn");
             Console.WriteLine("[2] Efternavn");
             Console.WriteLine("[3] Adresse");
             Console.WriteLine("[4] Alder");
-            ConsoleKey menuValg = Console.ReadKey(true).Key;
+            ConsoleKey menuValg = Console.ReadKey(true).Key; //den læser hvilken tast man trykker, og laver det til en variabel
             string nyt = "";
             string g = "";
             switch (menuValg)
             {
-                case ConsoleKey.D1:
+                case ConsoleKey.D1: //hvilken tast man har trykket
                     g = "Fornavn";
                     Console.Write("Nyt fornavn: ");
                     nyt = Console.ReadLine();
-                    if (nyt.Length < 1) { RedigerKunde(id); }
+                    if (nyt.Length < 1) { RedigerKunde(id); } //her tjekker den om fornavn er fin længde, både over 0 og under 20
                     if (nyt.Length > 20)
                     {
                         Console.WriteLine("Maks 20 tegn i fornavn");
@@ -98,6 +101,7 @@ namespace Project
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                         {
+                            //her tjekker den om der er tal i strengen, ved at gå igennem alle chars
                             Console.WriteLine("Ingen tal i navn");
                             Console.ReadKey();
                             RedigerKunde(id);
@@ -108,7 +112,7 @@ namespace Project
                     g = "Efternavn";
                     Console.Write("Nyt efternavn: ");
                     nyt = Console.ReadLine();
-                    if (nyt.Length < 1) { RedigerKunde(id); }
+                    if (nyt.Length < 1) { RedigerKunde(id); }//her tjekker den om efternavn er fin længde, både over 0 og under 40
                     if (nyt.Length > 40)
                     {
                         Console.WriteLine("Maks 40 tegn i efternavn");
@@ -119,6 +123,7 @@ namespace Project
                     {
                         if (int.TryParse(c.ToString(), out int i) || c.ToString() == " ")
                         {
+                            //her tjekker den om der er tal i strengen, ved at gå igennem alle chars
                             Console.WriteLine("Ingen tal i navn");
                             Console.ReadKey();
                             RedigerKunde(id);
@@ -129,7 +134,7 @@ namespace Project
                     g = "Adresse";
                     Console.Write("Ny adresse: ");
                     nyt = Console.ReadLine();
-                    if (nyt.Length > 80)
+                    if (nyt.Length > 80) //her tjekker den om adressen er fin længde
                     {
                         Console.WriteLine("Maks 80 tegn i adresse");
                         Console.ReadKey();
@@ -139,7 +144,7 @@ namespace Project
                 case ConsoleKey.D4:
                     g = "Alder";
                     Console.Write("Ny alder: ");
-                    if (int.TryParse(Console.ReadLine(), out int nyalder)) ;
+                    if (int.TryParse(Console.ReadLine(), out int nyalder)) ;//her tjekker den om der er bogstaver i tallet
                     else
                     {
                         Console.WriteLine("Ingen bogstaver i alder");
@@ -149,9 +154,9 @@ namespace Project
                     nyt = nyalder.ToString();
                     break;
             }
-            Kunder.RetKunde(id,g,nyt);
+            Kunder.RetKunde(id,g,nyt); // kalder metoden RetBruger i Kunder klassen, med de informationer brugeren har givet
             Console.Clear();
-            Program.Kundemenu();
+            Program.Kundemenu(); //går tilbage til kundemenuen
         }
 
         public void KundeMuligheder()
@@ -161,7 +166,7 @@ namespace Project
             bool ud = false;
             string valgKunde;
             Console.Write("\nVælg ID eller tryk på alt andet for at gå tilbage: ");
-            valgKunde = Console.ReadLine();
+            valgKunde = Console.ReadLine(); //brugerens valg
             while (!ud)
             {
                 kunde = Kunder.VælgKunde(valgKunde);
@@ -170,7 +175,7 @@ namespace Project
                     Console.WriteLine("[1] Slet kunde");
                     Console.WriteLine("[2] Redigere kunde");
                     Console.WriteLine("[3] Vis Kundens biler");
-                    kundeValg = Console.ReadKey(true).Key;
+                    kundeValg = Console.ReadKey(true).Key; //hvilken tast brugeren trykker på, som bliver brugt til at vælge
                     switch (kundeValg)
                     {
                         case ConsoleKey.D1:
@@ -188,7 +193,7 @@ namespace Project
                     }
                 }
 
-                ud = true;
+                ud = true; //går ud af loopet med denne bool
             }
         }
         #endregion
@@ -200,7 +205,7 @@ namespace Project
             Console.WriteLine("Opret en ny bil");
             Console.Write("Registreringsnummer: ");
             string regnr = Console.ReadLine();
-            if (regnr.Length < 1) { OpretBil(); }
+            if (regnr.Length < 1) { OpretBil(); }//her tjekker den om strengen er fin længde, både over 0 og under 255
             if (regnr.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
@@ -209,7 +214,7 @@ namespace Project
             }
             Console.Write("Bil Mærke: ");
             string mærke = Console.ReadLine();
-            if (mærke.Length < 1) { OpretBil(); }
+            if (mærke.Length < 1) { OpretBil(); }//her tjekker den om strengen er fin længde, både over 0 og under 255
             if (mærke.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
@@ -218,7 +223,7 @@ namespace Project
             }
             Console.Write("Bil Model: ");
             string model = Console.ReadLine();
-            if (model.Length < 1) { OpretBil(); }
+            if (model.Length < 1) { OpretBil(); }//her tjekker den om strengen er fin længde, både over 0 og under 255
             if (model.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
@@ -226,20 +231,20 @@ namespace Project
                 OpretBil();
             }
             Console.Write("Årgang: ");
-            if (int.TryParse(Console.ReadLine(), out int årgang)) ;
+            if (int.TryParse(Console.ReadLine(), out int årgang)) ; //tjekker om der er bogstaver i tallet
             else
             {
                 OpretBil();
             }
             Console.Write("Kilometer: ");
-            if (double.TryParse(Console.ReadLine(), out double km)) ;
+            if (double.TryParse(Console.ReadLine(), out double km)) ;//tjekker om der er bogstaver i tallet
             else
             {
                 OpretBil();
             }
             Console.Write("Brændstofstype: ");
             string brnstoftype = Console.ReadLine();
-            if (brnstoftype.Length < 1) { OpretBil(); }
+            if (brnstoftype.Length < 1) { OpretBil(); }//her tjekker den om strengen er fin længde, både over 0 og under 255
             if (brnstoftype.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
@@ -247,12 +252,12 @@ namespace Project
                 OpretBil();
             }
             Console.Write("EjerID: ");
-            if (int.TryParse(Console.ReadLine(), out int ejer)) ;
+            if (int.TryParse(Console.ReadLine(), out int ejer)) ;//tjekker om der er bogstaver i tallet
             else
             {
                 OpretBil();
             }
-            if (Kunder.FindKunde(ejer))
+            if (Kunder.FindKunde(ejer))//tjekker om der findes en kunde med det givne ejer id
             {
                 Biler.OpretBil(regnr, mærke, model, årgang, km, brnstoftype, ejer);
             }
@@ -263,7 +268,7 @@ namespace Project
                 Program.Bilmenu();
             }
             Console.Clear();
-            Program.Bilmenu();
+            Program.Bilmenu(); //går tilbage til Bilmenu
         }
 
         public void RedigerBil(string id)
@@ -276,7 +281,7 @@ namespace Project
             Console.WriteLine("[4] Årgang");
             Console.WriteLine("[5] Kilometer");
             Console.WriteLine("[6] Brændstofstype");
-            ConsoleKey menuValg = Console.ReadKey(true).Key;
+            ConsoleKey menuValg = Console.ReadKey(true).Key;//den læser hvilken tast man trykker, og laver det til en variabel, som bliver brugt til at vælge
             string nyt = "";
             string g = "";
             switch (menuValg)
@@ -285,7 +290,7 @@ namespace Project
                     g = "Regnr";
                     Console.Write("Nyt regnr: ");
                     nyt = Console.ReadLine();
-                    if (nyt.Length < 1) { RedigerBil(id); }
+                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
                     if (nyt.Length > 255)
                     {
                         Console.WriteLine("Ikke længere end 255 tegn");
@@ -303,7 +308,7 @@ namespace Project
                         Console.ReadKey();
                         RedigerBil(id);
                     }
-                    if (nyt.Length < 1) { RedigerBil(id); }
+                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
                     break;
                 case ConsoleKey.D3:
                     g = "Model";
@@ -315,12 +320,12 @@ namespace Project
                         Console.ReadKey();
                         RedigerBil(id);
                     }
-                    if (nyt.Length < 1) { RedigerBil(id); }
+                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
                     break;
                 case ConsoleKey.D4:
                     g = "Årgang";
                     Console.Write("Ny årgang: ");
-                    if (int.TryParse(Console.ReadLine(), out int nyå)) ;
+                    if (int.TryParse(Console.ReadLine(), out int nyå)) ;//her tjekker den om der er bogstaver i tallet
                     else
                     {
                         RedigerBil(id);
@@ -330,7 +335,7 @@ namespace Project
                 case ConsoleKey.D5:
                     g = "Kilometer";
                     Console.Write("Ny antal km: ");
-                    if (int.TryParse(Console.ReadLine(), out int nykm)) ;
+                    if (int.TryParse(Console.ReadLine(), out int nykm)) ;//her tjekker den om der er bogstaver i tallet
                     else
                     {
                         RedigerBil(id);
@@ -347,16 +352,18 @@ namespace Project
                         Console.ReadKey();
                         RedigerBil(id);
                     }
-                    if (nyt.Length < 1) { RedigerBil(id); }
+                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
                     break;
             }
-            Biler.RetBil(id, g, nyt);
+            Biler.RetBil(id, g, nyt); //finder bilen med id og giver den ny information
             Console.Clear();
             Program.Bilmenu();
         }
 
         public void BilMuligheder()
         {
+            Console.Clear();
+            Biler.BilListe();
             string bil;
             ConsoleKey bilValg;
             bool ud = false;
@@ -365,7 +372,7 @@ namespace Project
             valgbil = Console.ReadLine();
             while (!ud)
             {
-                bil = Biler.VælgBil(valgbil);
+                bil = Biler.VælgBil(valgbil); //her finder den bilen ud fra hvad man har skrevet
                 if (bil != "Findes Ikke")
                 {
                     Console.WriteLine("\n[1] Slet bil");
@@ -400,7 +407,7 @@ namespace Project
                     }
                 }
 
-                ud = true;
+                ud = true; //går ud af loopet med boolen
             }
         }
         #endregion
@@ -416,9 +423,9 @@ namespace Project
             {
                 // Dagen på ugen
                 Console.Write("Skriv dagens dato for besøget [DD]: ");
-                if (int.TryParse(Console.ReadLine(), out int datoDag))
+                if (int.TryParse(Console.ReadLine(), out int datoDag))//tjekker om tallet indeholder bogstaver
                 {
-                    if (datoDag > 31 || datoDag < 1)
+                    if (datoDag > 31 || datoDag < 1) //tjekker om tallet er i orden
                     {
                         Console.WriteLine("Dagens dato er indtastet forkert!");
                         Console.ReadKey();
@@ -434,9 +441,9 @@ namespace Project
 
                 // Måneden på året
                 Console.Write("Skriv månedens dato for besøget [MM]: ");
-                if (int.TryParse(Console.ReadLine(), out int datoMåned))
+                if (int.TryParse(Console.ReadLine(), out int datoMåned))//tjekker om tallet indeholder bogstaver
                 {
-                    if (datoMåned > 12 || datoMåned < 1)
+                    if (datoMåned > 12 || datoMåned < 1)//tjekker om tallet er i orden
                     {
                         Console.WriteLine("Måneden er indtastet forkert!");
                         Console.ReadKey();
@@ -452,9 +459,9 @@ namespace Project
 
                 // Året på besøget
                 Console.Write("Skriv året for besøget [YYYY]: ");
-                if (int.TryParse(Console.ReadLine(), out int datoÅr))
+                if (int.TryParse(Console.ReadLine(), out int datoÅr))//tjekker om tallet indeholder bogstaver
                 {
-                    if (datoÅr > 9999 || datoÅr < 1000)
+                    if (datoÅr > 9999 || datoÅr < 1000)//tjekker om tallet er i orden
                     {
                         Console.WriteLine("Året er indtastet forkert!");
                         Console.ReadKey();
@@ -470,9 +477,9 @@ namespace Project
 
                 // Timer på klokkeslettet
                 Console.Write("Skriv timeslettet for besøget [TT]: ");
-                if (int.TryParse(Console.ReadLine(), out int datoTimer))
+                if (int.TryParse(Console.ReadLine(), out int datoTimer))//tjekker om tallet indeholder bogstaver
                 {
-                    if (datoTimer > 23 || datoTimer < 0)
+                    if (datoTimer > 23 || datoTimer < 0)//tjekker om tallet er i orden
                     {
                         Console.WriteLine("Timerne er indtastet forkert!");
                         Console.ReadKey();
@@ -488,9 +495,9 @@ namespace Project
 
                 // Minutter på klokkeslettet
                 Console.Write("Skriv minutslettet for besøget [MM]: ");
-                if (int.TryParse(Console.ReadLine(), out int datoMinutter))
+                if (int.TryParse(Console.ReadLine(), out int datoMinutter))//tjekker om tallet indeholder bogstaver
                 {
-                    if (datoMinutter > 59 || datoMinutter < 0)
+                    if (datoMinutter > 59 || datoMinutter < 0)//tjekker om tallet er i orden
                     {
                         Console.WriteLine("Minutter er indtastet forkert!");
                         Console.ReadKey();
@@ -507,8 +514,9 @@ namespace Project
                 trueDate = true; //hvis man er nået hertil så er alt godt
             }
             
-            if (trueDate && retOrOpret || retOrOpret == false)
+            if (trueDate && retOrOpret || !retOrOpret) //hvis man har indtastet information
             {
+                //opretter eller retter ud fra boolen retOrOpret
                 if (retOrOpret)
                 {
                     Besøg.OpretBesøg(bilValg, dato);
@@ -518,6 +526,9 @@ namespace Project
                     Besøg.RetBesøg(bilValg, dato);
                 }
             }
+            Console.WriteLine("Besøgstid er nu oprettet");
+            Console.ReadKey();
+            BilMuligheder(); //går tilbage til menuen
         }
             
         public void BesøgMuligheder()
@@ -530,7 +541,7 @@ namespace Project
             valgBesøg = Console.ReadLine();
             while (!ud)
             {
-                besøger = Besøg.VælgBesøg(valgBesøg);
+                besøger = Besøg.VælgBesøg(valgBesøg); //finder besøg som bruger søger efter
                 if (besøger != "Findes Ikke")
                 {
                     Console.WriteLine("\n[1] Slet Besøg");
