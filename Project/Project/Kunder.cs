@@ -11,8 +11,7 @@ namespace Project
 {
     static class Kunder
     {
-        
-
+        //en metode der henter alle kunder, og deres informationer, fra databasen og udskriver dem
         static public void KundeListe()
         {
             Use.Dt = new DataTable();
