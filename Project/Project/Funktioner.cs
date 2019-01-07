@@ -357,6 +357,7 @@ namespace Project
 
         public void BilMuligheder()
         {
+            Biler.BilListe();
             string bil;
             ConsoleKey bilValg;
             bool ud = false;
