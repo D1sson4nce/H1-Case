@@ -412,98 +412,100 @@ namespace Project
             string dato = null;
 
             Console.Clear();
-
-            // Dagen på ugen
-            Console.Write("Skriv dagens dato for besøget [DD]: ");
-            if (int.TryParse(Console.ReadLine(), out int datoDag))
+            if (!trueDate)
             {
-                if (datoDag > 31 || datoDag < 1)
+                // Dagen på ugen
+                Console.Write("Skriv dagens dato for besøget [DD]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoDag))
+                {
+                    if (datoDag > 31 || datoDag < 1)
+                    {
+                        Console.WriteLine("Dagens dato er indtastet forkert!");
+                        Console.ReadKey();
+                        OpretBesøg(bilValg, retOrOpret);
+                    }
+                }
+                else
                 {
                     Console.WriteLine("Dagens dato er indtastet forkert!");
                     Console.ReadKey();
-                OpretBesøg(bilValg, retOrOpret);
-            }
-            }
-            else
-            {
-                Console.WriteLine("Dagens dato er indtastet forkert!");
-                Console.ReadKey();
-                OpretBesøg(bilValg,retOrOpret);
-            }
+                    OpretBesøg(bilValg, retOrOpret);
+                }
 
-            // Måneden på året
-            Console.Write("Skriv månedens dato for besøget [MM]: ");
-            if (int.TryParse(Console.ReadLine(), out int datoMåned))
-            {
-                if (datoMåned > 12 || datoMåned < 1)
+                // Måneden på året
+                Console.Write("Skriv månedens dato for besøget [MM]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoMåned))
+                {
+                    if (datoMåned > 12 || datoMåned < 1)
+                    {
+                        Console.WriteLine("Måneden er indtastet forkert!");
+                        Console.ReadKey();
+                        OpretBesøg(bilValg, retOrOpret);
+                    }
+                }
+                else
                 {
                     Console.WriteLine("Måneden er indtastet forkert!");
                     Console.ReadKey();
-                    OpretBesøg(bilValg,retOrOpret);
+                    OpretBesøg(bilValg, retOrOpret);
                 }
-            }
-            else
-            {
-                Console.WriteLine("Måneden er indtastet forkert!");
-                Console.ReadKey();
-                OpretBesøg(bilValg,retOrOpret);
-            }
 
-            // Året på besøget
-            Console.Write("Skriv året for besøget [YYYY]: ");
-            if (int.TryParse(Console.ReadLine(), out int datoÅr))
-            {
-                if (datoÅr > 9999 || datoÅr < 1000)
+                // Året på besøget
+                Console.Write("Skriv året for besøget [YYYY]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoÅr))
+                {
+                    if (datoÅr > 9999 || datoÅr < 1000)
+                    {
+                        Console.WriteLine("Året er indtastet forkert!");
+                        Console.ReadKey();
+                        OpretBesøg(bilValg, retOrOpret);
+                    }
+                }
+                else
                 {
                     Console.WriteLine("Året er indtastet forkert!");
                     Console.ReadKey();
                     OpretBesøg(bilValg, retOrOpret);
                 }
-            }
-            else
-            {
-                Console.WriteLine("Året er indtastet forkert!");
-                Console.ReadKey();
-                OpretBesøg(bilValg, retOrOpret);
-            }
 
-            // Timer på klokkeslettet
-            Console.Write("Skriv timeslettet for besøget [TT]: ");
-            if (int.TryParse(Console.ReadLine(), out int datoTimer))
-            {
-                if (datoTimer > 23 || datoTimer < 0)
+                // Timer på klokkeslettet
+                Console.Write("Skriv timeslettet for besøget [TT]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoTimer))
+                {
+                    if (datoTimer > 23 || datoTimer < 0)
+                    {
+                        Console.WriteLine("Timerne er indtastet forkert!");
+                        Console.ReadKey();
+                        OpretBesøg(bilValg, retOrOpret);
+                    }
+                }
+                else
                 {
                     Console.WriteLine("Timerne er indtastet forkert!");
                     Console.ReadKey();
                     OpretBesøg(bilValg, retOrOpret);
                 }
-            }
-            else
-            {
-                Console.WriteLine("Timerne er indtastet forkert!");
-                Console.ReadKey();
-                OpretBesøg(bilValg, retOrOpret);
-            }
 
-            // Minutter på klokkeslettet
-            Console.Write("Skriv minutslettet for besøget [MM]: ");
-            if (int.TryParse(Console.ReadLine(), out int datoMinutter))
-            {
-                if (datoMinutter > 59 || datoMinutter < 0)
+                // Minutter på klokkeslettet
+                Console.Write("Skriv minutslettet for besøget [MM]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoMinutter))
+                {
+                    if (datoMinutter > 59 || datoMinutter < 0)
+                    {
+                        Console.WriteLine("Minutter er indtastet forkert!");
+                        Console.ReadKey();
+                        OpretBesøg(bilValg, retOrOpret);
+                    }
+                }
+                else
                 {
                     Console.WriteLine("Minutter er indtastet forkert!");
                     Console.ReadKey();
                     OpretBesøg(bilValg, retOrOpret);
                 }
+                dato = $"{datoDag.ToString("00")}-{datoMåned.ToString("00")}-{datoÅr.ToString("0000")} {datoTimer.ToString("00")}:{datoMinutter.ToString("00")}";
+                trueDate = true; //hvis man er nået hertil så er alt godt
             }
-            else
-            {
-                Console.WriteLine("Minutter er indtastet forkert!");
-                Console.ReadKey();
-                OpretBesøg(bilValg, retOrOpret);
-            }
-            dato = $"{datoDag.ToString("00")}-{datoMåned.ToString("00")}-{datoÅr.ToString("0000")} {datoTimer.ToString("00")}:{datoMinutter.ToString("00")}";
-            trueDate = true; //hvis man er nået hertil så er alt godt
             
             if (trueDate && retOrOpret || retOrOpret == false)
             {
