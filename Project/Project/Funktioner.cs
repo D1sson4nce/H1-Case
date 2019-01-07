@@ -201,6 +201,7 @@ namespace Project
             Console.WriteLine("Opret en ny bil");
             Console.Write("Registreringsnummer: ");
             string regnr = Console.ReadLine();
+            if (regnr.Length < 1) { OpretBil(); }
             if (regnr.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
@@ -209,6 +210,7 @@ namespace Project
             }
             Console.Write("Bil Mærke: ");
             string mærke = Console.ReadLine();
+            if (mærke.Length < 1) { OpretBil(); }
             if (mærke.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
@@ -217,6 +219,7 @@ namespace Project
             }
             Console.Write("Bil Model: ");
             string model = Console.ReadLine();
+            if (model.Length < 1) { OpretBil(); }
             if (model.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
@@ -237,6 +240,7 @@ namespace Project
             }
             Console.Write("Brændstofstype: ");
             string brnstoftype = Console.ReadLine();
+            if (brnstoftype.Length < 1) { OpretBil(); }
             if (brnstoftype.Length > 255)
             {
                 Console.WriteLine("Ikke længere end 255 tegn");
