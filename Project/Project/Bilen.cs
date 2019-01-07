@@ -67,10 +67,6 @@ namespace Project
             this.brnstoftype = brnstoftype;
             this.ejer = ejer;
         }
-
-        public Bilen()
-        {
-
-        }
+        
     }
 }

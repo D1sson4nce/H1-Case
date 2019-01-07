@@ -37,12 +37,12 @@ namespace Project
             }
         }
 
-        static public void OpretBil()
+        static public void OpretBil(string regnr, string mærke, string model, int årgang, double km, string brnstoftype, int ejer)
         {
             Use.Dt = new DataTable();
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                Bilen bilen = new Bilen();
+                Bilen bilen = new Bilen(regnr, mærke, model, årgang, km, brnstoftype, ejer);
 
                 Use.Con.Open();
                 string e = "wad";

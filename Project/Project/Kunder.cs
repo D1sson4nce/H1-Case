@@ -62,11 +62,11 @@ namespace Project
             }
         }
 
-        static public void OpretBruger()
+        static public void OpretBruger(string fnavn, string enavn, string adresse, int alder)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
             {
-                Kunden kunde = new Kunden();
+                Kunden kunde = new Kunden(fnavn, enavn, adresse, alder);
 
                 Use.Con.Open();
                 string sql = "";

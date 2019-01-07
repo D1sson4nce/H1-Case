@@ -42,11 +42,6 @@ namespace Project
             this.enavn = enavn;
             this.adresse = adresse;
             this.alder = alder;
-        }
-
-        public Kunden()
-        {
-
-        }
+        }        
     }
 }
