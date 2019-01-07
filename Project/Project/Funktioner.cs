@@ -406,141 +406,105 @@ namespace Project
         #region Besøg
         public void OpretBesøg(string bilValg, bool retOrOpret)
         {
-            int datoDag = 0;
-            int datoMåned = 0;
-            int datoÅr = 0;
-            int datoTimer = 0;
-            int datoMinutter = 0;
             bool trueDate = false;
             string dato = null;
-            while (trueDate == false)
+            while (!trueDate)
             {
-                do
+                Console.Clear();
+
+                // Dagen på ugen
+                Console.Write("Skriv dagens dato for besøget [DD]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoDag))
                 {
-                    Console.Clear();
-
-                    // Dagen på ugen
-                    Console.Write("Skriv dagens dato for besøget [DD]: ");
-                    try
+                    if (datoDag > 31 || datoDag < 1)
                     {
-                        datoDag = Convert.ToInt32(Console.ReadLine());
-                        if (datoDag > 31 || datoDag < 1)
-                        {
-                            Console.WriteLine("Dagens dato er indtastet forkert!");
-                            Console.ReadLine();
-                            break;
-                        }
-                        else
-                        {
-                            Convert.ToString(datoDag);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Dagens dato er skrevet forkert!");
-                        Console.ReadLine();
+                        Console.WriteLine("Dagens dato er indtastet forkert!");
+                        Console.ReadKey();
                         break;
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Dagens dato er indtastet forkert!");
+                    Console.ReadKey();
+                    break;
+                }
 
-                    // Måneden på året
-                    Console.Write("Skriv månedens dato for besøget [MM]: ");
-                    try
+                // Måneden på året
+                Console.Write("Skriv månedens dato for besøget [MM]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoMåned))
+                {
+                    if (datoMåned > 12 || datoMåned < 1)
                     {
-                        datoMåned = Convert.ToInt32(Console.ReadLine());
-                        if (datoMåned > 12 || datoMåned < 1)
-                        {
-                            Console.WriteLine("Måneden er indtastet forkert!");
-                            Console.ReadLine();
-                            break;
-                        }
-                        else
-                        {
-                            Convert.ToString(datoMåned);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Måneden er skrevet forkert!");
-                        Console.ReadLine();
+                        Console.WriteLine("Måneden er indtastet forkert!");
+                        Console.ReadKey();
                         break;
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Måneden er indtastet forkert!");
+                    Console.ReadKey();
+                    break;
+                }
 
-                    // Året på besøget
-                    Console.Write("Skriv året for besøget [YYYY]: ");
-                    try
+                // Året på besøget
+                Console.Write("Skriv året for besøget [YYYY]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoÅr))
+                {
+                    if (datoÅr > 9999 || datoÅr < 1000)
                     {
-                        datoÅr = Convert.ToInt32(Console.ReadLine());
-                        if (datoÅr > 9999 || datoÅr < 1000)
-                        {
-                            Console.WriteLine("Året er indtastet forkert!");
-                            Console.ReadLine();
-                            break;
-                        }
-                        else
-                        {
-                            Convert.ToString(datoÅr);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Året må kun indeholde tal!");
-                        Console.ReadLine();
+                        Console.WriteLine("Året er indtastet forkert!");
+                        Console.ReadKey();
                         break;
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Året er indtastet forkert!");
+                    Console.ReadKey();
+                    break;
+                }
 
-
-                    // Timer på klokkeslettet
-                    Console.Write("Skriv timeslettet for besøget [TT]: ");
-                    try
+                // Timer på klokkeslettet
+                Console.Write("Skriv timeslettet for besøget [TT]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoTimer))
+                {
+                    if (datoTimer > 23 || datoTimer < 0)
                     {
-                        datoTimer = Convert.ToInt32(Console.ReadLine());
-                        if (datoTimer > 23 || datoTimer < 0)
-                        {
-                            Console.WriteLine("Timerne er indtastet forkert!");
-                            Console.ReadLine();
-                            break;
-                        }
-                        else
-                        {
-                            Convert.ToString(datoTimer);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Timerne er skrevet forkert!");
-                        Console.ReadLine();
+                        Console.WriteLine("Timerne er indtastet forkert!");
+                        Console.ReadKey();
                         break;
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Timerne er indtastet forkert!");
+                    Console.ReadKey();
+                    break;
+                }
 
-                    // Minutter på klokkeslettet
-                    Console.Write("Skriv minutslettet for besøget [MM]: ");
-                    try
+                // Minutter på klokkeslettet
+                Console.Write("Skriv minutslettet for besøget [MM]: ");
+                if (int.TryParse(Console.ReadLine(), out int datoMinutter))
+                {
+                    if (datoMinutter > 59 || datoMinutter < 0)
                     {
-                        datoMinutter = Convert.ToInt32(Console.ReadLine());
-                        if (datoMinutter > 59 || datoMinutter < 0)
-                        {
-                            Console.WriteLine("Datoen er indtastet forkert!");
-                            Console.ReadLine();
-                            break;
-                        }
-                        else
-                        {
-                            Convert.ToString(datoMinutter);
-                            trueDate = true;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Minutterne er skrevet forkert!");
-                        Console.ReadLine();
+                        Console.WriteLine("Minutter er indtastet forkert!");
+                        Console.ReadKey();
                         break;
                     }
-
-
-
-                    dato = $"{datoDag.ToString("00")}-{datoMåned.ToString("00")}-{datoÅr.ToString("0000")} {datoTimer.ToString("00")}:{datoMinutter.ToString("00")}";
-
-                } while (trueDate == false);
+                }
+                else
+                {
+                    Console.WriteLine("Minutter er indtastet forkert!");
+                    Console.ReadKey();
+                    break;
+                }
+                dato = $"{datoDag.ToString("00")}-{datoMåned.ToString("00")}-{datoÅr.ToString("0000")} {datoTimer.ToString("00")}:{datoMinutter.ToString("00")}";
+                Console.WriteLine(dato);
+                Console.ReadKey();
+                trueDate = true; //hvis man er nået hertil så er alt godt og programmet går ud af while loopet med denne bool
             }
             if (trueDate && retOrOpret || retOrOpret == false)
             {
