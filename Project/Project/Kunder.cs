@@ -110,7 +110,7 @@ namespace Project
             return "Findes Ikke";
         }
 
-        //
+        //Her sletter den den kunde der matcher og sletter sletter alle kundens biler og besøgstider til de biler
         static public void SletKunde(string id)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -139,6 +139,7 @@ namespace Project
             }
         }
 
+        //Ændre informationen
         static public void RetKunde(string id, string info, string nyInfo)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
