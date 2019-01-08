@@ -135,6 +135,7 @@ namespace Project
                     g = "Adresse";
                     Console.Write("Ny adresse: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerKunde(id); }
                     if (nyt.Length > 80) //her tjekker den om adressen er fin længde
                     {
                         Console.WriteLine("Maks 80 tegn i adresse");
