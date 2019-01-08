@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -275,93 +276,109 @@ namespace Project
 
         public void RedigerBil(string id)
         {
-            Console.Clear();
-            Console.WriteLine("Hvad vil du ændre:");
-            Console.WriteLine("[1] Registreringsnummer");
-            Console.WriteLine("[2] Mærke");
-            Console.WriteLine("[3] Model");
-            Console.WriteLine("[4] Årgang");
-            Console.WriteLine("[5] Kilometer");
-            Console.WriteLine("[6] Brændstofstype");
-            ConsoleKey menuValg = Console.ReadKey(true).Key;//den læser hvilken tast man trykker, og laver det til en variabel, som bliver brugt til at vælge
-            string nyt = "";
-            string g = "";
-            switch (menuValg)
+            string g = null, nyt = null;
+            bool done = false;
+            while (!done)
             {
-                case ConsoleKey.D1:
-                    g = "Regnr";
-                    Console.Write("Nyt regnr: ");
-                    nyt = Console.ReadLine();
-                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
-                    if (nyt.Length > 255)
-                    {
-                        Console.WriteLine("Ikke længere end 255 tegn");
-                        Console.ReadKey();
-                        RedigerBil(id);
-                    }
-                    break;
-                case ConsoleKey.D2:
-                    g = "Mærke";
-                    Console.Write("Nyt mærke: ");
-                    nyt = Console.ReadLine();
-                    if (nyt.Length > 255)
-                    {
-                        Console.WriteLine("Ikke længere end 255 tegn");
-                        Console.ReadKey();
-                        RedigerBil(id);
-                    }
-                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
-                    break;
-                case ConsoleKey.D3:
-                    g = "Model";
-                    Console.Write("Ny model: ");
-                    nyt = Console.ReadLine();
-                    if (nyt.Length > 255)
-                    {
-                        Console.WriteLine("Ikke længere end 255 tegn");
-                        Console.ReadKey();
-                        RedigerBil(id);
-                    }
-                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
-                    break;
-                case ConsoleKey.D4:
-                    g = "Årgang";
-                    Console.Write("Ny årgang: ");
-                    if (int.TryParse(Console.ReadLine(), out int nyå)) ;//her tjekker den om der er bogstaver i tallet
-                    else
-                    {
-                        RedigerBil(id);
-                    }
-                    nyt = nyå.ToString();
-                    break;
-                case ConsoleKey.D5:
-                    g = "Kilometer";
-                    Console.Write("Ny antal km: ");
-                    if (int.TryParse(Console.ReadLine(), out int nykm)) ;//her tjekker den om der er bogstaver i tallet
-                    else
-                    {
-                        RedigerBil(id);
-                    }
-                    nyt = nykm.ToString();
-                    break;
-                case ConsoleKey.D6:
-                    g = "Brændstoftype";
-                    Console.Write("Ny brændstoftype: ");
-                    nyt = Console.ReadLine();
-                    if (nyt.Length > 255)
-                    {
-                        Console.WriteLine("Ikke længere end 255 tegn");
-                        Console.ReadKey();
-                        RedigerBil(id);
-                    }
-                    if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
-                    break;
+                Console.Clear();
+                Console.WriteLine("Hvad vil du ændre:");
+                Console.WriteLine("[1] Registreringsnummer");
+                Console.WriteLine("[2] Mærke");
+                Console.WriteLine("[3] Model");
+                Console.WriteLine("[4] Årgang");
+                Console.WriteLine("[5] Kilometer");
+                Console.WriteLine("[6] Brændstofstype");
+                ConsoleKey menuValg = Console.ReadKey(true).Key;//den læser hvilken tast man trykker, og laver det til en variabel, som bliver brugt til at vælge
+                nyt = "";
+                g = "";
+                switch (menuValg)
+                {
+                    case ConsoleKey.D1:
+                        g = "Regnr";
+                        Console.Write("Nyt regnr: ");
+                        nyt = Console.ReadLine();
+                        if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
+                        if (nyt.Length > 255)
+                        {
+                            Console.WriteLine("Ikke længere end 255 tegn");
+                            Console.ReadKey();
+                            RedigerBil(id);
+                        }
+
+                        done = true;
+                        break;
+                    case ConsoleKey.D2:
+                        g = "Mærke";
+                        Console.Write("Nyt mærke: ");
+                        nyt = Console.ReadLine();
+                        if (nyt.Length > 255)
+                        {
+                            Console.WriteLine("Ikke længere end 255 tegn");
+                            Console.ReadKey();
+                            RedigerBil(id);
+                        }
+                        if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
+
+                        done = true;
+                        break;
+                    case ConsoleKey.D3:
+                        g = "Model";
+                        Console.Write("Ny model: ");
+                        nyt = Console.ReadLine();
+                        if (nyt.Length > 255)
+                        {
+                            Console.WriteLine("Ikke længere end 255 tegn");
+                            Console.ReadKey();
+                            RedigerBil(id);
+                        }
+                        if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
+
+                        done = true;
+                        break;
+                    case ConsoleKey.D4:
+                        g = "Årgang";
+                        Console.Write("Ny årgang: ");
+                        if (int.TryParse(Console.ReadLine(), out int nyå)) ;//her tjekker den om der er bogstaver i tallet
+                        else
+                        {
+                            RedigerBil(id);
+                        }
+                        nyt = nyå.ToString();
+                        done = true;
+                        break;
+                    case ConsoleKey.D5:
+                        g = "Kilometer";
+                        Console.Write("Ny antal km: ");
+                        if (int.TryParse(Console.ReadLine(), out int nykm)) ;//her tjekker den om der er bogstaver i tallet
+                        else
+                        {
+                            RedigerBil(id);
+                        }
+                        nyt = nykm.ToString();
+                        done = true;
+                        break;
+                    case ConsoleKey.D6:
+                        g = "Brændstoftype";
+                        Console.Write("Ny brændstoftype: ");
+                        nyt = Console.ReadLine();
+                        if (nyt.Length > 255)
+                        {
+                            Console.WriteLine("Ikke længere end 255 tegn");
+                            Console.ReadKey();
+                            RedigerBil(id);
+                        }
+                        if (nyt.Length < 1) { RedigerBil(id); }//her tjekker den om strengen er fin længde, både over 0 og under 255
+                        done = true;
+                        break;
+                    case ConsoleKey.Escape:
+                        return;
+                }
             }
             Biler.RetBil(id, g, nyt); //finder bilen med id og giver den ny information
             Console.Clear();
             Program.Bilmenu();
         }
-
+        
         public void BilMuligheder()
         {
             string bil;
