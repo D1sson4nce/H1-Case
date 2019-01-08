@@ -115,7 +115,7 @@ namespace Project
                         string bil = Console.ReadLine();
                         Biler.BilSøgning(bil);
                         fejlHånd.BilMuligheder();
-                        Console.ReadKey();
+                        
                         break;
 
                     case ConsoleKey.D3:
