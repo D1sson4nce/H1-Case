@@ -53,6 +53,7 @@ namespace Project
             }
             Console.Write("Adresse: ");
             string adresse = Console.ReadLine();
+            if (adresse.Length < 1) { OpretKunde(); }
             if (adresse.Length > 80) //her tjekker den om adressen er fin længde
             {
                 Console.WriteLine("Maks 80 tegn i adresse");
@@ -134,6 +135,7 @@ namespace Project
                     g = "Adresse";
                     Console.Write("Ny adresse: ");
                     nyt = Console.ReadLine();
+                    if (nyt.Length < 1) { RedigerKunde(id); }
                     if (nyt.Length > 80) //her tjekker den om adressen er fin længde
                     {
                         Console.WriteLine("Maks 80 tegn i adresse");
@@ -362,8 +364,6 @@ namespace Project
 
         public void BilMuligheder()
         {
-            Console.Clear();
-            Biler.BilListe();
             string bil;
             ConsoleKey bilValg;
             bool ud = false;
@@ -405,10 +405,10 @@ namespace Project
                         case ConsoleKey.Escape:
                             break;
                     }
-                }
-
+                }                
                 ud = true; //går ud af loopet med boolen
             }
+            Program.Bilmenu();
         }
         #endregion
 
@@ -528,6 +528,8 @@ namespace Project
             }
             Console.WriteLine("Besøgstid er nu oprettet");
             Console.ReadKey();
+            Console.Clear();
+            Biler.BilListe();
             BilMuligheder(); //går tilbage til menuen
         }
             

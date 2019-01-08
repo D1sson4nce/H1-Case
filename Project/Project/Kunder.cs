@@ -81,7 +81,7 @@ namespace Project
             }
         }
         
-        //Her tager den det id der er blevet inputtet for at se om den findes. Hvis den findes returner den det ID, hvis den ikke findes returner den "findes ikke"
+        //Udskriver al information om den specifikke valgte bruger
         static public string VælgKunde(string valgID)
         {
             Console.Clear();
@@ -110,7 +110,7 @@ namespace Project
             return "Findes Ikke";
         }
 
-        //
+        //Her sletter den den kunde der matcher og sletter sletter alle kundens biler og besøgstider til de biler
         static public void SletKunde(string id)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -139,6 +139,7 @@ namespace Project
             }
         }
 
+        //Ændre den valgte informationen på den valgte kunde med brugerens input
         static public void RetKunde(string id, string info, string nyInfo)
         {
             using (Use.Con = new SqlConnection(Use.StrCon1))
@@ -153,6 +154,7 @@ namespace Project
             }
         }
 
+        //Her tager den det id der er blevet inputtet for at se om den findes. Hvis den findes returner den det ID, hvis den ikke findes returner den "findes ikke"
         static public bool FindKunde(int id)
         {
             Use.Dt = new DataTable();
@@ -173,6 +175,7 @@ namespace Project
             return false;
         }
 
+        //Viser alle biler som den valgte kunde ejer
         static public void KundeBil(string id)
         {
             Use.Dt = new DataTable();
