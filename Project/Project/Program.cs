@@ -110,7 +110,7 @@ namespace Project
                         break;
 
                     case ConsoleKey.D2:
-                        Console.WriteLine("Søg efter kunde med vilkårlig info");
+                        Console.WriteLine("Søg efter bil med vilkårlig info");
                         Console.Write("Søg: ");
                         string bil = Console.ReadLine();
                         Biler.BilSøgning(bil);
@@ -119,6 +119,8 @@ namespace Project
                         break;
 
                     case ConsoleKey.D3:
+                        Console.Clear();
+                        Biler.BilListe();
                         fejlHånd.BilMuligheder();
                         Console.ReadKey();
                         break;

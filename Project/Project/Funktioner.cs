@@ -363,8 +363,6 @@ namespace Project
 
         public void BilMuligheder()
         {
-            Console.Clear();
-            Biler.BilListe();
             string bil;
             ConsoleKey bilValg;
             bool ud = false;
@@ -406,10 +404,10 @@ namespace Project
                         case ConsoleKey.Escape:
                             break;
                     }
-                }
-
+                }                
                 ud = true; //går ud af loopet med boolen
             }
+            Program.Bilmenu();
         }
         #endregion
 
@@ -529,6 +527,8 @@ namespace Project
             }
             Console.WriteLine("Besøgstid er nu oprettet");
             Console.ReadKey();
+            Console.Clear();
+            Biler.BilListe();
             BilMuligheder(); //går tilbage til menuen
         }
             
