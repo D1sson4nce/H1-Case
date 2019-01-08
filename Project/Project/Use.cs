@@ -17,7 +17,7 @@ namespace Project
         {
             get { return strCon1 = $"data source={Environment.MachineName}; database=ProjektDB; integrated security=SSPI"; }
         }
-
+        //nogle properties programmet bruger 
         static public SqlConnection Con { get; set; }
         static public SqlDataAdapter Ada { get; set; }
         static public DataTable Dt { get; set; }
