@@ -53,6 +53,7 @@ namespace Project
             }
             Console.Write("Adresse: ");
             string adresse = Console.ReadLine();
+            if (adresse.Length < 1) { OpretKunde(); }
             if (adresse.Length > 80) //her tjekker den om adressen er fin længde
             {
                 Console.WriteLine("Maks 80 tegn i adresse");
