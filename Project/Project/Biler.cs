@@ -46,12 +46,13 @@ namespace Project
                 Bilen bilen = new Bilen(regnr, mærke, model, årgang, km, brnstoftype, ejer);
 
                 Use.Con.Open();
-                string e = "wad";
+                Use.Ada = new SqlDataAdapter("select Regnr from Biler", Use.Con);
+                Use.Ada.Fill(Use.Dt);
                 bool bilFindes = false;
                 // Tjekker om en bil findes i databasen, før bilen kan blive oprettet
                 foreach (DataRow bil in Use.Dt.Rows)
                 {
-                    if (e == bil["Regnr"].ToString())
+                    if (regnr == bil["Regnr"].ToString())
                     {
                         bilFindes = true;
                     }
@@ -75,7 +76,7 @@ namespace Project
                 // Hvis bilen findes i databasen, skal den oplyse det og afbryde aktionen
                 else
                 {
-                    Console.WriteLine("Fejl. Bilen er allerede registreret i databasen.");
+                    Console.WriteLine("Fejl. Registreringsnummeret er allerede registreret i databasen.");
                 }
             }
 
@@ -170,11 +171,50 @@ namespace Project
                 Use.Con.Open();
                 string sql = "";
                 Use.Ada = new SqlDataAdapter();
+                if (info == "Regnr")
+                {
+                    Use.Dt = new DataTable();
+                    Use.Ada = new SqlDataAdapter("select Regnr, Mærke, Model, Årgang, Km, Brændstoftype, EjerID from Biler where Regnr = '" + id + "'", Use.Con);
+                    Use.Ada.Fill(Use.Dt);
 
+                    foreach (DataRow bil in Use.Dt.Rows) //udskriver alle informationerne per bil fra data table Dt
+                    {
+                        string mærke = bil["Mærke"].ToString();
+                        string model = bil["Model"].ToString();
+                        string strÅrgang = bil["Årgang"].ToString();
+                        string strKm = bil["Km"].ToString();
+                        string brnstof = bil["Brændstoftype"].ToString();
+                        string strEjerId = bil["EjerID"].ToString();
+                        int årgang = Convert.ToInt32(strÅrgang);
+                        double km = Convert.ToDouble(strKm);
+                        int ejerId = Convert.ToInt32(strEjerId);
+
+                        sql = $"insert into Biler values ('{nyInfo}', '{mærke}', '{model}', {årgang}, {km}, '{brnstof}', {ejerId}, '{DateTime.Now.ToString("dd-MM-yyyy")}')";
+                        Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                        Use.Ada.InsertCommand.ExecuteNonQuery();
+                    }
+
+                    Use.Ada = new SqlDataAdapter("select Regnr from Biler where Regnr = '" + id + "'", Use.Con);
+                    Use.Ada.Fill(Use.Dt);
+
+                    foreach (DataRow bilnr in Use.Dt.Rows)
+                    {
+                        sql = "update Værkstedsophold set Bil = '" + nyInfo + "'";
+                        Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                        Use.Ada.InsertCommand.ExecuteNonQuery();
+                    }
+
+                    sql = "delete from Biler where Regnr = '" + id + "'";
+                    Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
+                    Use.Ada.InsertCommand.ExecuteNonQuery();
+                }
+                else
+                {
                 //opdaterer bilen med det givne information ud fra regnr
                 sql = "update Biler set " + info + " = '" + nyInfo + "'  where Regnr = '" + id + "'";
                 Use.Ada.InsertCommand = new SqlCommand(sql, Use.Con);
                 Use.Ada.InsertCommand.ExecuteNonQuery();
+                }
             }
         }
     }
